@@ -64,22 +64,39 @@ body {
 .report-header .meta { font-size: 13px; opacity: 0.9; }
 
 /* 目录 */
-.toc {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
+/* ── 侧边栏导航 ── */
+.sidebar {
+  position: fixed; left: 0; top: 0; width: 260px; height: 100vh;
+  overflow-y: auto; background: var(--card-bg);
+  border-right: 1px solid var(--border); padding: 24px 0;
+  z-index: 100; box-shadow: 2px 0 8px rgba(0,0,0,0.04);
 }
-.toc h3 { font-size: 15px; margin-bottom: 12px; color: var(--text-light); }
-.toc ul { list-style: none; }
-.toc-h1 { margin-top: 8px; }
-.toc-h1 a { font-weight: 700; font-size: 15px; }
-.toc-h2 { margin-left: 20px; }
-.toc-h2 a { font-size: 14px; color: var(--text-light); }
-.toc a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
-.toc a:hover { color: var(--positive); text-decoration: underline; }
+.sidebar-header { padding: 0 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.sidebar-header h2 { font-size: 16px; color: var(--primary); border: none; padding: 0; margin: 0; }
+.sidebar-header .date { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+.sidebar nav .module-header {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  padding: 10px 20px 4px; margin-top: 8px; border-left: 3px solid var(--primary);
+}
+.sidebar nav .module-header:first-child { margin-top: 0; }
+.sidebar nav .table-link {
+  display: block; font-size: 12px; color: var(--text-light);
+  padding: 4px 20px 4px 28px; text-decoration: none; transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+.sidebar nav .table-link:hover { color: var(--primary); background: var(--hover); border-left-color: var(--primary); }
+.sidebar nav .table-link.active { color: var(--primary); font-weight: 600; background: var(--hover); border-left-color: var(--primary); }
+.sidebar nav .summary-link {
+  display: block; font-size: 12px; font-weight: 600; color: var(--text);
+  padding: 6px 20px; text-decoration: none; border-left: 3px solid #f59e0b;
+}
+.sidebar nav .summary-link:hover { background: var(--hover); }
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+/* 主体内容右移 */
+.container { max-width: 1100px; margin: 0 0 0 260px; padding: 24px 24px 60px; }
+@media (max-width: 768px) { .sidebar { display: none; } .container { margin: 0; padding: 16px; } }
 
 /* 正文区域 */
 .content {
@@ -213,7 +230,33 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
     <h1>📊 A股每日市场情绪与资金流向全景报告</h1>
     <div class="meta">报告日期：2026年07月03日 | 数据来源：东方财富Choice API + akshare + eltdx | 生成工具：WorkBuddy</div>
   </div>
-  <nav class="toc"><h3>📋 目录导航</h3><ul><li class="toc-h1"><a href="#a">📊 A股每日市场情绪与资金流向全景报告</a></li><li class="toc-h2"><a href="#executive-summary">Executive Summary</a></li><li class="toc-h2"><a href="#_1">【模块一】市场情绪</a></li><li class="toc-h2"><a href="#_2">【模块二】当日板块</a></li><li class="toc-h2"><a href="#_3">【模块三】近五日板块</a></li><li class="toc-h2"><a href="#_4">【模块四】个股资金</a></li><li class="toc-h2"><a href="#_5">研判与建议</a></li></ul></nav>
+  <aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>📊 金融日报</h2>
+    <div class="date">2026年07月03日（周五）</div>
+  </div>
+  <nav>
+    <a class="summary-link" href="#executive-summary">Executive Summary</a>
+    <div class="module-header">模块一 · 市场情绪</div>
+    <a class="table-link" href="#15">表1 三大指数涨跌幅</a>
+    <a class="table-link" href="#25st">表2 涨停情绪</a>
+    <a class="table-link" href="#35">表3 涨停质量指标</a>
+    <div class="module-header">模块二 · 当日板块</div>
+    <a class="table-link" href="#4-top5">表4 板块净流入TOP5</a>
+    <a class="table-link" href="#5-top5">表5 板块净流出TOP5</a>
+    <a class="table-link" href="#6top55">表6 逐日资金追踪</a>
+    <a class="table-link" href="#7">表7 趋势对比+信号</a>
+    <div class="module-header">模块三 · 近五日板块</div>
+    <a class="table-link" href="#85">表8 资金流向排名</a>
+    <a class="table-link" href="#95">表9 涨跌幅排名</a>
+    <a class="table-link" href="#105">表10 涨停家数排名</a>
+    <div class="module-header">模块四 · 个股资金</div>
+    <a class="table-link" href="#11-top5">表11 个股净流入TOP5</a>
+    <a class="table-link" href="#12-top5">表12 个股净流出TOP5</a>
+    <div class="module-header">研判与建议</div>
+    <a class="summary-link" href="#_5">市场研判</a>
+  </nav>
+</aside>
   <div class="content">
   <h1 id="a">📊 A股每日市场情绪与资金流向全景报告</h1>
 <blockquote>
@@ -1174,5 +1217,23 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <p><em>报告版本：v3.1.0 | 生成工具：WorkBuddy daily-market-review Skill</em></p>
   </div>
 </div>
+<script>
+const links = document.querySelectorAll('.sidebar .table-link, .sidebar .summary-link');
+const sections = [];
+links.forEach(link => {
+  const tid = link.getAttribute('href').replace('#', '');
+  const el = document.getElementById(tid);
+  if (el) sections.push({ id: tid, el: el, link: link });
+});
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.el.offsetTop - 100) cur = s.id;
+  });
+  links.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + cur);
+  });
+});
+</script>
 </body>
 </html>
