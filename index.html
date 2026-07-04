@@ -112,14 +112,18 @@ blockquote {
 }
 
 /* 表格 */
-table {
-  width: 100%;
-  border-collapse: collapse;
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 16px 0;
-  font-size: 13px;
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 0 0 1px var(--border);
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 100%;
 }
 
 th {
@@ -188,7 +192,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <hr />
 <h2 id="_1">【模块一】市场情绪</h2>
 <h3 id="15">表1：近5日三大指数涨跌幅 + 成交额</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">日期</th>
@@ -271,13 +275,13 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;">缩量2687亿</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 <strong>关键信号</strong>：07-02创业板指<strong>-5.71%创2025年4月以来最大单日跌幅</strong>，科创50 <strong>-7.70%为年内最大单日跌幅</strong>。07-03缩量反弹，成交额连续2日萎缩，修复无增量资金。</p>
 </blockquote>
 <hr />
 <h3 id="25st">表2：近5日涨停情绪（剔除ST板块）</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">日期</th>
@@ -348,7 +352,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;">92</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 <strong>ST板块单独说明</strong>：07-03 *ST同洲18连板创ST板块年内连板纪录，因7月6日ST涨跌幅限制由5%调整至10%催化，<strong>不计入主统计</strong>。国华退（5天4板）为退市股，亦不计入。</p>
 <p>📌 <strong>连板定义</strong>：<strong>最高连板</strong> = 连续涨停天数（中间无间断）；<strong>最高几天几板</strong> = N个交易日内累计涨停M次（中间可有间隔）。如恒尚节能7/3为4连板（连续4日涨停）；贤丰控股13天7板（13个交易日涨停7次但连板数仅1，今日为首板）。</p>
@@ -356,7 +360,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 </blockquote>
 <hr />
 <h3 id="35">表3：近5日涨停质量指标</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">日期</th>
@@ -421,7 +425,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;"><strong>0%</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 <strong>数据来源</strong>：akshare <code>stock_zt_pool_em</code>（涨停池）+ <code>stock_zt_pool_zbgc_em</code>（炸板池），07-03为精确值，历史日暂无。</p>
 <p>📌 <strong>晋级率定义</strong>：二板晋级率 = 今日2连板数 / 昨日首板数 × 100%；三板晋级率 = 今日3连板数 / 昨日2连板数 × 100%；四板晋级率 = 今日4连板数 / 昨日3连板数 × 100%；五板晋级率 = 今日5连板数 / 昨日4连板数 × 100%。</p>
@@ -430,7 +434,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <hr />
 <h2 id="_2">【模块二】当日板块</h2>
 <h3 id="4-top5">表4：今日概念板块主力资金净流入 TOP5（已剔除非题材板块）</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">排名</th>
@@ -483,14 +487,14 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;">+4.88%</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 已剔除：融资融券、深股通、沪股通、AH股、HS300_、标准普尔、大盘股、权重股、证金持股、茅指数、中特估等非题材板块。</p>
 <p>📌 <strong>机器人概念今日主力净流入143.74亿，断层全市场第一</strong>，叠加人形机器人+113.78亿，机器人方向合计流入超250亿。</p>
 </blockquote>
 <hr />
 <h3 id="5-top5">表5：今日概念板块主力资金净流出 TOP5（已剔除非题材板块）</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">排名</th>
@@ -543,7 +547,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;">-3.56%</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 已剔除：趋势股、昨日高振幅、题材股、融资融券、科技风格、专精特新等非题材板块。</p>
 <p>⚠️ <strong>半导体概念连续3日大幅流出</strong>：07-01流出484.87亿 → 07-02流出<strong>798.28亿</strong>（5日极值）→ 07-03流出358.48亿，3日合计流出超<strong>1600亿</strong>。</p>
@@ -551,7 +555,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <hr />
 <h3 id="6top55">表6：TOP5流入/流出板块近5个交易日逐日资金追踪（亿元）</h3>
 <p><strong>流入TOP5逐日追踪：</strong></p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">概念板块</th>
@@ -610,9 +614,9 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;"><strong>+11.12</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>流出TOP5逐日追踪：</strong></p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">概念板块</th>
@@ -671,14 +675,14 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;"><strong>-558.45</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 <strong>数据来源</strong>：东方财富Choice API <code>push2his.eastmoney.com</code> 历史资金流向接口。</p>
 <p>📌 <strong>5日合计解读</strong>：流入TOP5中仅人形机器人（+113.20亿）和低空经济（+11.12亿）5日净流入为正，其余3个板块5日合计仍为净流出，说明今日流入属<strong>超跌反弹</strong>性质。流出TOP5的半导体概念5日合计净流出<strong>-1622.44亿</strong>，为全市场最大资金出逃方向。</p>
 </blockquote>
 <hr />
 <h3 id="7">表7：趋势对比 + 关键信号</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">维度</th>
@@ -715,7 +719,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: left;">黄金板块连续2日流入，国际金价走强+降息避险预期驱动</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>⚠️ <strong>风险标注</strong>：芯片/半导体板块确认进入<strong>衰退黑手指</strong>赛道，日月光调涨先进封装报价利好被完全无视，板块全线大跌。</p>
 </blockquote>
@@ -723,7 +727,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <h2 id="_3">【模块三】近五日板块</h2>
 <h3 id="85">表8：近5日概念板块资金流向每日排名</h3>
 <p><strong>净流入TOP5：</strong></p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">日期</th>
@@ -776,9 +780,9 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;"><strong>低空经济(+80.74亿)</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>净流出TOP5：</strong></p>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">日期</th>
@@ -831,13 +835,13 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;"><strong>新材料(-150.18亿)</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 06-29、06-30部分数据来源为同花顺/东方财富网页搜索，金额标注"暂无"处为搜索未获取到精确数值。07-01至07-03流出TOP5数据来自东方财富Choice API历史接口，金额精确。</p>
 </blockquote>
 <hr />
 <h3 id="95">表9：近5日概念板块涨跌幅每日排名</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">日期</th>
@@ -896,14 +900,14 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;">工业气体(-4.48%)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 <strong>07-03领涨方向</strong>：机器人执行器 +7.53% ｜ 减速器 +6.32% ｜ 人形机器人 +4.24%</p>
 <p>📌 <strong>07-03领跌方向</strong>：PVDF概念 -5.15% ｜ 氟化工概念 -5.04% ｜ 工业气体 -4.48%</p>
 </blockquote>
 <hr />
 <h3 id="105">表10：近5日涨停家数每日排名</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">日期</th>
@@ -968,7 +972,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;"><strong>107</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 <strong>07-03涨停TOP3</strong>：机器人概念（44家）｜ 黄金（6家）｜ 商业航天（5家）</p>
 <p>📌 <strong>07-03行业分布TOP5</strong>（akshare，行业口径）：汽车零部20只、通用设备12只、贵金属5只、自动化设备4只、造纸3只。其中汽车零部+通用设备+自动化设备合计36只与机器人产业链高度重合。</p>
@@ -979,7 +983,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <hr />
 <h2 id="_4">【模块四】个股资金</h2>
 <h3 id="11-top5">表11：今日个股主力资金净流入 TOP5</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">排名</th>
@@ -1026,13 +1030,13 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;">+4.54%</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>📌 流入TOP5中有3只与机器人/汽车零部件相关（三花智控、立讯精密、拓普集团），印证机器人主线地位。</p>
 </blockquote>
 <hr />
 <h3 id="12-top5">表12：今日个股主力资金净流出 TOP5</h3>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">排名</th>
@@ -1079,7 +1083,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: center;">-9.68%</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>⚠️ <strong>流出TOP5全部为芯片/半导体/光电板块</strong>，京东方A单只净流出51.58亿，反映科技硬件方向资金持续出逃。</p>
 </blockquote>
@@ -1088,7 +1092,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <blockquote>
 <p><strong>市场定位</strong>：阴分歧内局部修复小阳周期，非全面转阳反转。</p>
 </blockquote>
-<table>
+<div class="table-wrap"><table>
 <thead>
 <tr>
 <th style="text-align: center;">方向</th>
@@ -1123,7 +1127,7 @@ code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 1
 <td style="text-align: left;">仓位≤2.5成，跌破4000降至0.5成</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>⚠️ <strong>核心风险</strong>：1）缩量修复无增量资金，反弹持续性存疑；2）芯片板块衰退确认，反弹即为减仓窗口；3）7月6日ST涨跌幅新规可能引发ST板块异动。</p>
 </blockquote>
