@@ -1,2021 +1,296 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A股市场情绪与资金流向全景报告 20260707</title>
-<style>
-:root{--bg:#0f1420;--panel:#161c2c;--panel2:#1b2335;--text:#e6ebf5;--muted:#93a0b8;--accent:#5b8cff;--accent2:#36d1c4;--border:#26304a;--pos:#ff5b6e;--neg:#23c98a;}
-*{box-sizing:border-box;}
-body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-body.light{--bg:#f4f6fb;--panel:#ffffff;--panel2:#eef2f9;--text:#1c2433;--muted:#5b6678;--border:#dce3ef;--pos:#e23b50;--neg:#0f9d63;}
-#sidebar{position:fixed;top:0;left:0;width:260px;height:100vh;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);padding:16px 10px;z-index:50;}
-#sidebar h1.logo{font-size:15px;margin:0 0 4px;padding:0 8px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;}
-#sidebar .sub{font-size:11px;color:var(--muted);padding:0 8px 10px;border-bottom:1px solid var(--border);margin-bottom:8px;}
-.nav-item{display:block;padding:6px 10px;margin:2px 0;border-radius:8px;color:var(--muted);text-decoration:none;font-size:13px;transition:.15s;border-left:3px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.nav-item.lv2{font-weight:700;color:var(--text);font-size:13.5px;margin-top:6px;}
-.nav-item.lv3{font-size:12.5px;padding-left:20px;}
-.nav-item:hover{background:var(--panel2);color:var(--text);}
-.nav-item.active{background:linear-gradient(90deg,rgba(91,140,255,.22),rgba(54,209,196,.12));color:#fff;border-left:3px solid var(--accent);}
-#main{margin-left:260px;padding:28px 32px 80px;max-width:1280px;}
-.toggle{position:fixed;top:14px;right:20px;z-index:60;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:13px;}
-h1.title{font-size:26px;margin:0 0 6px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
-blockquote{background:var(--panel);border-left:4px solid var(--accent);padding:10px 16px;border-radius:8px;color:var(--muted);margin:14px 0;}
-h2{margin-top:34px;padding:10px 14px;border-radius:10px;font-size:20px;color:#fff;background:linear-gradient(90deg,rgba(91,140,255,.9),rgba(54,209,196,.75));position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.25);}
-h3{margin:26px 0 12px;font-size:17px;color:var(--accent2);border-bottom:2px solid var(--border);padding-bottom:6px;}
-.table-wrap{overflow-x:auto;margin:12px 0 18px;border-radius:10px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,.18);}
-table{border-collapse:collapse;width:100%;font-size:13px;min-width:680px;background:var(--panel);}
-thead th{position:sticky;top:0;background:linear-gradient(90deg,#3a5bd0,#2bb6c9);color:#fff;padding:9px 12px;text-align:left;font-weight:700;white-space:nowrap;z-index:5;}
-tbody td{padding:8px 12px;border-top:1px solid var(--border);white-space:nowrap;}
-tbody tr:nth-child(even){background:var(--panel2);}
-tbody tr:hover{background:rgba(91,140,255,.12);}
-tbody td:first-child,tbody th:first-child{position:sticky;left:0;background:var(--panel);font-weight:600;z-index:4;box-shadow:1px 0 0 var(--border);}
-tbody tr:nth-child(even) td:first-child{background:var(--panel2);}
-a{color:var(--accent);}
-ul{background:var(--panel);padding:16px 36px;border-radius:10px;border:1px solid var(--border);}
-hr{border:none;border-top:1px solid var(--border);margin:30px 0;}
-.foot{color:var(--muted);font-size:12px;margin-top:24px;}
-@media(max-width:820px){#sidebar{display:none;}#main{margin-left:0;padding:18px;}}
-</style>
-</head>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>金融日报 · A股全景 20260708</title><style>
+:root{--bg:#f5f7fa;--card:#ffffff;--ink:#1f2933;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--th1:#3b82f6;--th2:#06b6d4;--up:#e11d48;--down:#059669;--navbg:#0f172a;--navink:#cbd5e1;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:linear-gradient(90deg,#0f172a,#1e3a8a);color:#fff}
+.topbar h1{font-size:18px;margin:0}
+.topbar .meta{font-size:12px;opacity:.8}
+#themeBtn{cursor:pointer;border:none;background:#ffffff22;color:#fff;padding:6px 12px;border-radius:8px;font-size:13px}
+.layout{display:flex}
+nav{position:fixed;top:56px;left:0;width:260px;height:calc(100vh - 56px);overflow-y:auto;background:var(--navbg);color:var(--navink);padding:14px 0}
+nav ul{list-style:none;margin:0;padding:0}
+nav li a{display:block;padding:8px 18px;color:var(--navink);text-decoration:none;font-size:13.5px;border-left:3px solid transparent}
+nav li a:hover{background:#1e293b;color:#fff}
+nav li a.active{background:#1e293b;color:#fff;border-left-color:#38bdf8;font-weight:600}
+main{margin-left:260px;padding:24px 28px;flex:1;max-width:calc(100% - 260px)}
+section{margin-bottom:34px;scroll-margin-top:64px}
+h3{font-size:18px;padding:10px 14px;background:linear-gradient(90deg,#1e3a8a,#0ea5e9);color:#fff;border-radius:8px}
+.table-wrap{overflow-x:auto;margin:10px 0;border-radius:10px;box-shadow:0 1px 3px #0001}
+table{border-collapse:collapse;width:100%;font-size:13px;background:var(--card);min-width:640px}
+thead th{background:linear-gradient(180deg,var(--th1),var(--th2));color:#fff;padding:9px 10px;text-align:right;position:sticky;top:0;white-space:nowrap;font-weight:600}
+thead th:first-child{text-align:left}
+tbody td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+tbody td:first-child{text-align:left;position:sticky;left:0;background:var(--card);font-weight:600;z-index:1}
+tbody tr:nth-child(even){background:#fafbfc}
+tbody tr:hover{background:#eff6ff}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.tnote{font-size:12px;color:var(--muted);margin:6px 2px}
+.summary,.verdict{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 18px;border-radius:8px}
+.verdict{border-left-color:#059669}
+footer{padding:20px 28px;color:var(--muted);font-size:12px;text-align:center}
+body.dark{--bg:#0b1020;--card:#141b2e;--ink:#e5e7eb;--muted:#94a3b8;--line:#243049}
+body.dark thead th{color:#fff}
+body.dark tbody td:first-child{background:var(--card)}
+body.dark tbody tr:nth-child(even){background:#101729}
+body.dark tbody tr:hover{background:#1b2540}
+body.dark .summary,body.dark .verdict{background:#141b2e}
+@media (max-width:880px){nav{display:none}main{margin-left:0;max-width:100%}}
+</style></head>
 <body>
-<button class="toggle" onclick="toggleTheme()">🌗 夜间/日间</button>
-<nav id="sidebar">
-  <h1 class="logo">金融日报 · 全景复盘</h1>
-  <div class="sub">20260707 ｜ 4模块 · 12表</div>
-  <a class="nav-item lv2" href="#h1" data-target="h1">Executive Summary</a>
-<a class="nav-item lv2" href="#h2" data-target="h2">模块一：市场情绪与涨停生态</a>
-<a class="nav-item lv3" href="#h3" data-target="h3">表1 涨停池全景（共33家）</a>
-<a class="nav-item lv3" href="#h4" data-target="h4">表2 炸板池（共23家）</a>
-<a class="nav-item lv3" href="#h5" data-target="h5">表3 连板梯队</a>
-<a class="nav-item lv3" href="#h6" data-target="h6">表4 情绪指标与晋级率</a>
-<a class="nav-item lv2" href="#h7" data-target="h7">模块二：板块资金流向</a>
-<a class="nav-item lv3" href="#h8" data-target="h8">表5 行业板块资金流入榜（当日·Top20）</a>
-<a class="nav-item lv3" href="#h9" data-target="h9">表6 行业板块资金流入榜（5日合计·Top20，末列为5日合计）</a>
-<a class="nav-item lv3" href="#h10" data-target="h10">表7 行业板块资金流出榜（当日·Top20）</a>
-<a class="nav-item lv2" href="#h11" data-target="h11">模块三：个股资金流向与题材概念</a>
-<a class="nav-item lv3" href="#h12" data-target="h12">表8 个股主力资金净流入榜（当日·Top20）</a>
-<a class="nav-item lv3" href="#h13" data-target="h13">表9 题材概念涨幅榜（eltdx题材映射增强）</a>
-<a class="nav-item lv3" href="#h14" data-target="h14">表10 重点个股题材概念映射（eltdx get_stock_topics 增强，无上涨家数占比）</a>
-<a class="nav-item lv2" href="#h15" data-target="h15">模块四：历史K线与综合研判</a>
-<a class="nav-item lv3" href="#h16" data-target="h16">表11 重点个股历史日涨跌幅（eltdx get_kline 补全）</a>
-<a class="nav-item lv3" href="#h17" data-target="h17">表12 核心研判汇总</a>
-<a class="nav-item lv2" href="#h18" data-target="h18">研判</a>
-
-</nav>
-<div id="main">
-<h1>A股市场情绪与资金流向全景报告</h1>
-<blockquote>
-<p><strong>报告日期</strong>：2026-07-07（交易日）　|　<strong>生成时间</strong>：自动生成　|　<strong>数据来源</strong>：东方财富Choice / 同花顺 / akshare / eltdx（通达信）三源交叉校验</p>
-</blockquote>
-<h2 id="h1">Executive Summary</h2>
-<ul>
-<li><strong>大盘表现</strong>：上证指数 3990.24（-1.26%）、深证成指 15225.11（-1.24%）、创业板指 3911.91（-0.94%）</li>
-<li><strong>市场宽度</strong>：上涨 634 家 / 下跌 4520 家 / 平 29 家（涨跌比约 1:7.1），普跌格局</li>
-<li><strong>涨停生态</strong>：涨停 33 家、跌停 30 家、炸板 23 家；连板 5 家，最高板 6 板；封板率 58.9%</li>
-<li><strong>晋级率</strong>：昨日涨停今日继续涨停 5/64（7.8%）；首板→2板晋级率 5.4%</li>
-<li><strong>资金主线</strong>：行业5日主力净流入居前——半导体(+305.3亿)、元件(+139.1亿)、通信设备(+131.9亿)、消费电子(+109.9亿)、光学光电子(+79.7亿)</li>
-<li><strong>最强题材</strong>：芯片(22只)、机器人概念(22只)、新能源车(20只)、近期强势(20只)、专精特新(19只)</li>
-<li><strong>研判基调</strong>：局部情绪尚可，关注连板高度拓展。详见文末《研判》</li>
-</ul>
-<h2 id="h2">模块一：市场情绪与涨停生态</h2>
-<h3 id="h3">表1 涨停池全景（共33家）</h3>
+<div class="topbar"><h1>📊 金融日报 · A股市场情绪与资金流向全景（20260708）</h1>
+<div style="display:flex;gap:14px;align-items:center"><span class="meta">生成 2026-07-08 18:50:06</span><button id="themeBtn">🌓 夜间模式</button></div></div>
+<div class="layout"><nav><ul><li><a href="#summary" data-target="summary">Executive Summary</a></li>
+<li><a href="#m1" data-target="m1">模块一 · 市场情绪总览</a></li>
+<li><a href="#t1" data-target="t1">表1 核心指数涨跌</a></li>
+<li><a href="#t2" data-target="t2">表2 涨跌家数/涨跌停</a></li>
+<li><a href="#t3" data-target="t3">表3 量能与情绪</a></li>
+<li><a href="#m2" data-target="m2">模块二 · 资金流向</a></li>
+<li><a href="#t4" data-target="t4">表4 北向/南向资金</a></li>
+<li><a href="#t5" data-target="t5">表5 行业板块资金</a></li>
+<li><a href="#t6" data-target="t6">表6 概念板块资金</a></li>
+<li><a href="#t7" data-target="t7">表7 个股主力资金</a></li>
+<li><a href="#m3" data-target="m3">模块三 · 涨停生态</a></li>
+<li><a href="#t8" data-target="t8">表8 涨停池明细</a></li>
+<li><a href="#t9" data-target="t9">表9 炸板池</a></li>
+<li><a href="#t10" data-target="t10">表10 连板梯队/晋级率</a></li>
+<li><a href="#m4" data-target="m4">模块四 · 题材概念与研判</a></li>
+<li><a href="#t11" data-target="t11">表11 题材概念涨幅</a></li>
+<li><a href="#t12" data-target="t12">表12 龙虎榜动向</a></li>
+<li><a href="#verdict" data-target="verdict">研判</a></li></ul></nav>
+<main><section id="summary"><h3 id="summary">Executive Summary</h3>
+<div class="summary">**20260708 A股市场全景速览**：今日两市普跌、情绪偏弱。上证指数 -0.49% 收 3970.88，科创50 逆势 +0.73%；全市场 1592 涨 / 3790 跌（上涨占比 28.8%），涨停 80 / 跌停 93，两市成交 2.58万亿。涨停 47 只、炸板 14 只，封板率 77.0%，最高连板 7 板（恒尚节能）。资金方面，行业主线为「半导体」；概念层面「国资云」涨幅居前、「AI智能体」主力净流入居首；北向实时净买入自2024-08起不再披露（显示0），南向净流入活跃。</div>
+</section><section id="m1"><h3>模块一 · 市场情绪总览</h3></section><section id="t1"><h3 id="t1">表1 · 核心指数涨跌</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>代码</th>
-<th>名称</th>
-<th>连板</th>
-<th>涨停统计</th>
-<th>涨跌幅</th>
-<th>最新价</th>
-<th>封板资金</th>
-<th>首封时间</th>
-<th>所属行业</th>
-</tr>
-</thead>
+<thead><tr><th>指数</th><th>收盘</th><th>涨跌幅</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>603137</td>
-<td>恒尚节能</td>
-<td>6</td>
-<td>6/6</td>
-<td>+9.98%</td>
-<td>20.83</td>
-<td>3.85亿</td>
-<td>092503</td>
-<td>装修装饰</td>
-</tr>
-<tr>
-<td>2</td>
-<td>600793</td>
-<td>宜宾纸业</td>
-<td>5</td>
-<td>11/6</td>
-<td>+9.99%</td>
-<td>19.37</td>
-<td>0.26亿</td>
-<td>094637</td>
-<td>造纸</td>
-</tr>
-<tr>
-<td>3</td>
-<td>603861</td>
-<td>白云电器</td>
-<td>2</td>
-<td>2/2</td>
-<td>+9.99%</td>
-<td>15.20</td>
-<td>0.37亿</td>
-<td>095121</td>
-<td>电网设备</td>
-</tr>
-<tr>
-<td>4</td>
-<td>600288</td>
-<td>大恒科技</td>
-<td>2</td>
-<td>2/2</td>
-<td>+9.97%</td>
-<td>15.55</td>
-<td>0.15亿</td>
-<td>093406</td>
-<td>软件开发</td>
-</tr>
-<tr>
-<td>5</td>
-<td>600246</td>
-<td>万通发展</td>
-<td>2</td>
-<td>2/2</td>
-<td>+9.99%</td>
-<td>18.60</td>
-<td>0.05亿</td>
-<td>094816</td>
-<td>房地产开</td>
-</tr>
-<tr>
-<td>6</td>
-<td>002841</td>
-<td>视源股份</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.01%</td>
-<td>43.08</td>
-<td>5.21亿</td>
-<td>092500</td>
-<td>消费电子</td>
-</tr>
-<tr>
-<td>7</td>
-<td>002185</td>
-<td>华天科技</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.98%</td>
-<td>21.93</td>
-<td>4.19亿</td>
-<td>103015</td>
-<td>半导体</td>
-</tr>
-<tr>
-<td>8</td>
-<td>002497</td>
-<td>雅化集团</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.00%</td>
-<td>24.65</td>
-<td>3.71亿</td>
-<td>092500</td>
-<td>化学制品</td>
-</tr>
-<tr>
-<td>9</td>
-<td>600206</td>
-<td>有研新材</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.00%</td>
-<td>55.98</td>
-<td>2.78亿</td>
-<td>094536</td>
-<td>半导体</td>
-</tr>
-<tr>
-<td>10</td>
-<td>001365</td>
-<td>天海电子</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.00%</td>
-<td>43.46</td>
-<td>1.67亿</td>
-<td>093818</td>
-<td>汽车零部</td>
-</tr>
-<tr>
-<td>11</td>
-<td>600120</td>
-<td>浙江东方</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.91%</td>
-<td>4.88</td>
-<td>1.52亿</td>
-<td>092503</td>
-<td>多元金融</td>
-</tr>
-<tr>
-<td>12</td>
-<td>301251</td>
-<td>威尔高</td>
-<td>1</td>
-<td>1/1</td>
-<td>+20.00%</td>
-<td>50.77</td>
-<td>1.51亿</td>
-<td>092500</td>
-<td>元件</td>
-</tr>
-<tr>
-<td>13</td>
-<td>002585</td>
-<td>双星新材</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.96%</td>
-<td>11.37</td>
-<td>1.47亿</td>
-<td>094315</td>
-<td>塑料</td>
-</tr>
-<tr>
-<td>14</td>
-<td>002129</td>
-<td>TCL中环</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.98%</td>
-<td>11.02</td>
-<td>1.39亿</td>
-<td>100524</td>
-<td>光伏设备</td>
-</tr>
-<tr>
-<td>15</td>
-<td>003004</td>
-<td>声迅股份</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.00%</td>
-<td>79.95</td>
-<td>1.20亿</td>
-<td>110854</td>
-<td>计算机设</td>
-</tr>
-<tr>
-<td>16</td>
-<td>001229</td>
-<td>魅视科技</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.00%</td>
-<td>38.82</td>
-<td>1.20亿</td>
-<td>093006</td>
-<td>计算机设</td>
-</tr>
-<tr>
-<td>17</td>
-<td>603356</td>
-<td>华菱精工</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.00%</td>
-<td>17.93</td>
-<td>1.02亿</td>
-<td>093526</td>
-<td>专用设备</td>
-</tr>
-<tr>
-<td>18</td>
-<td>002951</td>
-<td>金时科技</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.01%</td>
-<td>14.84</td>
-<td>0.95亿</td>
-<td>093503</td>
-<td>其他电源</td>
-</tr>
-<tr>
-<td>19</td>
-<td>600360</td>
-<td>华微电子</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.98%</td>
-<td>15.32</td>
-<td>0.87亿</td>
-<td>134508</td>
-<td>半导体</td>
-</tr>
-<tr>
-<td>20</td>
-<td>688432</td>
-<td>有研硅</td>
-<td>1</td>
-<td>1/1</td>
-<td>+20.00%</td>
-<td>46.14</td>
-<td>0.85亿</td>
-<td>095640</td>
-<td>半导体</td>
-</tr>
-<tr>
-<td>21</td>
-<td>601121</td>
-<td>宝地矿业</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.03%</td>
-<td>6.47</td>
-<td>0.62亿</td>
-<td>092502</td>
-<td>冶钢原料</td>
-</tr>
-<tr>
-<td>22</td>
-<td>600094</td>
-<td>大名城</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.03%</td>
-<td>3.84</td>
-<td>0.62亿</td>
-<td>105833</td>
-<td>房地产开</td>
-</tr>
-<tr>
-<td>23</td>
-<td>002137</td>
-<td>实益达</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.01%</td>
-<td>11.43</td>
-<td>0.60亿</td>
-<td>095357</td>
-<td>光学光电</td>
-</tr>
-<tr>
-<td>24</td>
-<td>001311</td>
-<td>多利科技</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.01%</td>
-<td>19.67</td>
-<td>0.58亿</td>
-<td>093145</td>
-<td>汽车零部</td>
-</tr>
-<tr>
-<td>25</td>
-<td>000973</td>
-<td>佛塑科技</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.04%</td>
-<td>14.58</td>
-<td>0.50亿</td>
-<td>093103</td>
-<td>塑料</td>
-</tr>
-<tr>
-<td>26</td>
-<td>603178</td>
-<td>圣龙股份</td>
-<td>1</td>
-<td>3/2</td>
-<td>+10.03%</td>
-<td>16.35</td>
-<td>0.42亿</td>
-<td>093553</td>
-<td>汽车零部</td>
-</tr>
-<tr>
-<td>27</td>
-<td>605399</td>
-<td>晨光新材</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.01%</td>
-<td>14.51</td>
-<td>0.38亿</td>
-<td>102221</td>
-<td>化学制品</td>
-</tr>
-<tr>
-<td>28</td>
-<td>605118</td>
-<td>力鼎光电</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.99%</td>
-<td>38.08</td>
-<td>0.35亿</td>
-<td>093735</td>
-<td>计算机设</td>
-</tr>
-<tr>
-<td>29</td>
-<td>301516</td>
-<td>中远通</td>
-<td>1</td>
-<td>1/1</td>
-<td>+20.00%</td>
-<td>18.72</td>
-<td>0.33亿</td>
-<td>100933</td>
-<td>其他电源</td>
-</tr>
-<tr>
-<td>30</td>
-<td>603823</td>
-<td>百合花</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.01%</td>
-<td>72.45</td>
-<td>0.32亿</td>
-<td>103506</td>
-<td>化学制品</td>
-</tr>
-<tr>
-<td>31</td>
-<td>001230</td>
-<td>劲旅环境</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.97%</td>
-<td>17.42</td>
-<td>0.30亿</td>
-<td>131054</td>
-<td>环境治理</td>
-</tr>
-<tr>
-<td>32</td>
-<td>001206</td>
-<td>依依股份</td>
-<td>1</td>
-<td>1/1</td>
-<td>+10.02%</td>
-<td>19.54</td>
-<td>0.25亿</td>
-<td>095230</td>
-<td>个护用品</td>
-</tr>
-<tr>
-<td>33</td>
-<td>603065</td>
-<td>宿迁联盛</td>
-<td>1</td>
-<td>1/1</td>
-<td>+9.99%</td>
-<td>20.25</td>
-<td>0.12亿</td>
-<td>093732</td>
-<td>化学制品</td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="h4">表2 炸板池（共23家）</h3>
+<tr><td>上证指数</td><td>3970.88</td><td><span class="down">-0.49%</span></td></tr>
+<tr><td>深证成指</td><td>14939.73</td><td><span class="down">-1.87%</span></td></tr>
+<tr><td>创业板指</td><td>3845.35</td><td><span class="down">-1.70%</span></td></tr>
+<tr><td>科创50</td><td>2016.23</td><td><span class="up">+0.73%</span></td></tr>
+<tr><td>沪深300</td><td>4755.53</td><td><span class="down">-0.77%</span></td></tr>
+<tr><td>北证50</td><td>1204.04</td><td><span class="down">-2.59%</span></td></tr>
+</tbody></table></div>
+</section><section id="t2"><h3 id="t2">表2 · 涨跌家数与涨跌停统计</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>代码</th>
-<th>名称</th>
-<th>涨跌幅</th>
-<th>涨停价</th>
-<th>成交额</th>
-<th>炸板次数</th>
-<th>所属行业</th>
-</tr>
-</thead>
+<thead><tr><th>指标</th><th>数值</th><th>占比/备注</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>002558</td>
-<td>巨人网络</td>
-<td>+6.01%</td>
-<td>30.18</td>
-<td>53.75亿</td>
-<td>5</td>
-<td>游戏Ⅱ</td>
-</tr>
-<tr>
-<td>2</td>
-<td>603893</td>
-<td>瑞芯微</td>
-<td>+8.28%</td>
-<td>193.73</td>
-<td>49.67亿</td>
-<td>1</td>
-<td>半导体</td>
-</tr>
-<tr>
-<td>3</td>
-<td>600110</td>
-<td>诺德股份</td>
-<td>+5.84%</td>
-<td>15.83</td>
-<td>43.05亿</td>
-<td>1</td>
-<td>电池</td>
-</tr>
-<tr>
-<td>4</td>
-<td>002617</td>
-<td>露笑科技</td>
-<td>+8.14%</td>
-<td>9.87</td>
-<td>35.71亿</td>
-<td>8</td>
-<td>电力</td>
-</tr>
-<tr>
-<td>5</td>
-<td>603538</td>
-<td>美诺华</td>
-<td>+5.10%</td>
-<td>45.74</td>
-<td>35.31亿</td>
-<td>2</td>
-<td>化学制药</td>
-</tr>
-<tr>
-<td>6</td>
-<td>000970</td>
-<td>中科三环</td>
-<td>+6.29%</td>
-<td>17.13</td>
-<td>25.25亿</td>
-<td>1</td>
-<td>金属新材</td>
-</tr>
-<tr>
-<td>7</td>
-<td>002266</td>
-<td>浙富控股</td>
-<td>+8.70%</td>
-<td>5.82</td>
-<td>20.93亿</td>
-<td>1</td>
-<td>环境治理</td>
-</tr>
-<tr>
-<td>8</td>
-<td>688261</td>
-<td>东微半导</td>
-<td>+16.33%</td>
-<td>102.20</td>
-<td>19.03亿</td>
-<td>2</td>
-<td>半导体</td>
-</tr>
-<tr>
-<td>9</td>
-<td>002077</td>
-<td>大港股份</td>
-<td>+7.44%</td>
-<td>19.53</td>
-<td>16.93亿</td>
-<td>2</td>
-<td>半导体</td>
-</tr>
-<tr>
-<td>10</td>
-<td>603698</td>
-<td>航天工程</td>
-<td>+3.86%</td>
-<td>43.31</td>
-<td>16.53亿</td>
-<td>2</td>
-<td>专用设备</td>
-</tr>
-<tr>
-<td>11</td>
-<td>002132</td>
-<td>恒星科技</td>
-<td>+7.99%</td>
-<td>6.19</td>
-<td>16.41亿</td>
-<td>9</td>
-<td>通用设备</td>
-</tr>
-<tr>
-<td>12</td>
-<td>002741</td>
-<td>光华科技</td>
-<td>+3.48%</td>
-<td>34.78</td>
-<td>16.17亿</td>
-<td>1</td>
-<td>电子化学</td>
-</tr>
-<tr>
-<td>13</td>
-<td>002031</td>
-<td>巨轮智能</td>
-<td>+7.47%</td>
-<td>6.18</td>
-<td>14.47亿</td>
-<td>1</td>
-<td>专用设备</td>
-</tr>
-<tr>
-<td>14</td>
-<td>002457</td>
-<td>青龙管业</td>
-<td>+6.54%</td>
-<td>15.48</td>
-<td>13.83亿</td>
-<td>1</td>
-<td>装修建材</td>
-</tr>
-<tr>
-<td>15</td>
-<td>000818</td>
-<td>航锦科技</td>
-<td>+0.97%</td>
-<td>16.95</td>
-<td>13.80亿</td>
-<td>1</td>
-<td>化学原料</td>
-</tr>
-<tr>
-<td>16</td>
-<td>300276</td>
-<td>三丰智能</td>
-<td>+10.97%</td>
-<td>8.42</td>
-<td>11.71亿</td>
-<td>1</td>
-<td>自动化设</td>
-</tr>
-<tr>
-<td>17</td>
-<td>002733</td>
-<td>雄韬股份</td>
-<td>+4.46%</td>
-<td>27.64</td>
-<td>10.59亿</td>
-<td>1</td>
-<td>电池</td>
-</tr>
-<tr>
-<td>18</td>
-<td>002584</td>
-<td>西陇科学</td>
-<td>+5.98%</td>
-<td>10.30</td>
-<td>10.25亿</td>
-<td>1</td>
-<td>电子化学</td>
-</tr>
-<tr>
-<td>19</td>
-<td>300043</td>
-<td>星辉娱乐</td>
-<td>+14.13%</td>
-<td>5.44</td>
-<td>9.01亿</td>
-<td>1</td>
-<td>游戏Ⅱ</td>
-</tr>
-<tr>
-<td>20</td>
-<td>603722</td>
-<td>阿科力</td>
-<td>+1.58%</td>
-<td>47.92</td>
-<td>8.81亿</td>
-<td>3</td>
-<td>化学制品</td>
-</tr>
-<tr>
-<td>21</td>
-<td>603819</td>
-<td>神力股份</td>
-<td>+0.37%</td>
-<td>14.96</td>
-<td>5.39亿</td>
-<td>5</td>
-<td>电机Ⅱ</td>
-</tr>
-<tr>
-<td>22</td>
-<td>603333</td>
-<td>福华尚纬</td>
-<td>+6.18%</td>
-<td>8.55</td>
-<td>3.55亿</td>
-<td>1</td>
-<td>电网设备</td>
-</tr>
-<tr>
-<td>23</td>
-<td>600076</td>
-<td>康欣新材</td>
-<td>+4.80%</td>
-<td>3.66</td>
-<td>2.66亿</td>
-<td>1</td>
-<td>包装印刷</td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="h5">表3 连板梯队</h3>
+<tr><td>上涨家数</td><td>1592.00</td><td>28.8%</td></tr>
+<tr><td>下跌家数</td><td>3790.00</td><td>71.2%</td></tr>
+<tr><td>平盘家数</td><td>145.00</td><td>—</td></tr>
+<tr><td>涨停（≥9.9%）</td><td>80.00</td><td>—</td></tr>
+<tr><td>跌停（≤-9.9%）</td><td>93.00</td><td>—</td></tr>
+<tr><td>涨跌停比</td><td>80/93</td><td>0.86</td></tr>
+<tr><td>两市成交额</td><td>2.58万亿</td><td>—</td></tr>
+<tr><td>全市场股票总数</td><td>5527.00</td><td>—</td></tr>
+</tbody></table></div><p class="tnote">上涨家数占比 28.8%，典型避险日（跌停多于涨停）。成交额来自新浪全市场快照汇总。</p>
+</section><section id="t3"><h3 id="t3">表3 · 量能与情绪指标</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>连板高度</th>
-<th>家数</th>
-<th>代表股</th>
-</tr>
-</thead>
+<thead><tr><th>情绪指标</th><th>数值</th><th>说明</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>28</td>
-<td>雅化集团、视源股份、威尔高、宝地矿业…</td>
-</tr>
-<tr>
-<td>2</td>
-<td>3</td>
-<td>大恒科技、万通发展、白云电器</td>
-</tr>
-<tr>
-<td>5</td>
-<td>1</td>
-<td>宜宾纸业</td>
-</tr>
-<tr>
-<td>6</td>
-<td>1</td>
-<td>恒尚节能</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p>连板合计 5 家，最高板 6 板；首板 28 家。</p>
-</blockquote>
-<h3 id="h6">表4 情绪指标与晋级率</h3>
+<tr><td>涨停封板数（东财口径）</td><td>47.00</td><td>封住涨停的个股</td></tr>
+<tr><td>炸板数</td><td>14.00</td><td>触板未封住</td></tr>
+<tr><td>封板率</td><td>77.0%</td><td>封板/(封板+炸板)</td></tr>
+<tr><td>连板高度</td><td>7板</td><td>最高连板：恒尚节能(603137)</td></tr>
+<tr><td>连板家数(≥2板)</td><td>8.00</td><td>今日晋级连板总数</td></tr>
+<tr><td>整体连板晋级率</td><td>24.2%</td><td>今日连板/昨日涨停总数</td></tr>
+<tr><td>上涨家数占比</td><td>28.8%</td><td>表2</td></tr>
+<tr><td>情绪温度计</td><td>50.8/100</td><td>综合研判：中性偏弱</td></tr>
+</tbody></table></div><p class="tnote">情绪温度计=0.5×上涨占比+0.2×封板率+0.3×连板高度因子（启发式综合，仅供参考）。</p>
+</section><section id="m2"><h3>模块二 · 资金流向</h3></section><section id="t4"><h3 id="t4">表4 · 北向/南向资金概览</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>指标</th>
-<th>数值</th>
-<th>指标</th>
-<th>数值</th>
-</tr>
-</thead>
+<thead><tr><th>板块</th><th>方向</th><th>成交净买额</th><th>资金净流入</th><th>涨/跌家数</th><th>指数涨跌</th></tr></thead>
 <tbody>
-<tr>
-<td>涨停家数</td>
-<td>33</td>
-<td>跌停家数</td>
-<td>30</td>
-</tr>
-<tr>
-<td>炸板家数</td>
-<td>23</td>
-<td>封板率</td>
-<td>58.9%</td>
-</tr>
-<tr>
-<td>连板家数</td>
-<td>5</td>
-<td>最高连板</td>
-<td>6板</td>
-</tr>
-<tr>
-<td>昨日涨停</td>
-<td>64</td>
-<td>今日续涨(晋级)</td>
-<td>5（7.8%）</td>
-</tr>
-<tr>
-<td>首板→2板</td>
-<td>56</td>
-<td>晋级率</td>
-<td>5.4%</td>
-</tr>
-<tr>
-<td>上涨家数</td>
-<td>634</td>
-<td>下跌家数</td>
-<td>4520</td>
-</tr>
-<tr>
-<td>平盘</td>
-<td>29</td>
-<td>涨跌比</td>
-<td>1:7.1</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="h7">模块二：板块资金流向</h2>
-<h3 id="h8">表5 行业板块资金流入榜（当日·Top20）</h3>
+<tr><td>沪股通</td><td>北向</td><td>0.00</td><td>0.00</td><td>556/1035</td><td>-0.49%</td></tr>
+<tr><td>港股通(沪)</td><td>南向</td><td>70.30</td><td>420.00</td><td>381/204</td><td>+2.99%</td></tr>
+<tr><td>深股通</td><td>北向</td><td>0.00</td><td>0.00</td><td>523/1304</td><td>-1.87%</td></tr>
+<tr><td>港股通(深)</td><td>南向</td><td>71.64</td><td>420.00</td><td>381/204</td><td>+2.99%</td></tr>
+</tbody></table></div><p class="tnote">北向（沪股通/深股通）成交净买额显示为0：自2024-08起北向实时净买入数据不再披露，相关指数涨跌与沪深一致。南向（港股通）净流入活跃。</p>
+</section><section id="t5"><h3 id="t5">表5 · 行业板块资金流向 TOP10</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>行业</th>
-<th>涨跌幅</th>
-<th>净流入</th>
-<th>领涨股</th>
-<th>领涨股涨跌幅</th>
-</tr>
-</thead>
+<thead><tr><th>行业</th><th>涨跌幅</th><th>主力净额(亿)</th><th>领涨股</th><th>领涨股涨幅</th><th>公司家数</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>半导体</td>
-<td>+0.56%</td>
-<td>103.01亿</td>
-<td>有研硅</td>
-<td>+20.00%</td>
-</tr>
-<tr>
-<td>2</td>
-<td>通信设备</td>
-<td>-2.53%</td>
-<td>27.30亿</td>
-<td>光迅科技</td>
-<td>+6.05%</td>
-</tr>
-<tr>
-<td>3</td>
-<td>游戏</td>
-<td>+1.16%</td>
-<td>15.50亿</td>
-<td>星辉娱乐</td>
-<td>+14.13%</td>
-</tr>
-<tr>
-<td>4</td>
-<td>银行</td>
-<td>-0.40%</td>
-<td>6.67亿</td>
-<td>建设银行</td>
-<td>+2.58%</td>
-</tr>
-<tr>
-<td>5</td>
-<td>影视院线</td>
-<td>-0.64%</td>
-<td>3.13亿</td>
-<td>儒意电影</td>
-<td>+5.99%</td>
-</tr>
-<tr>
-<td>6</td>
-<td>教育</td>
-<td>-3.02%</td>
-<td>2.92亿</td>
-<td>中公教育</td>
-<td>+8.13%</td>
-</tr>
-<tr>
-<td>7</td>
-<td>电子化学品</td>
-<td>-1.28%</td>
-<td>1.97亿</td>
-<td>广钢气体</td>
-<td>+6.52%</td>
-</tr>
-<tr>
-<td>8</td>
-<td>黑色家电</td>
-<td>-1.98%</td>
-<td>1.94亿</td>
-<td>兆驰股份</td>
-<td>+5.22%</td>
-</tr>
-<tr>
-<td>9</td>
-<td>工程机械</td>
-<td>-1.17%</td>
-<td>0.05亿</td>
-<td>艾迪精密</td>
-<td>+5.54%</td>
-</tr>
-<tr>
-<td>10</td>
-<td>橡胶制品</td>
-<td>-2.66%</td>
-<td>-0.07亿</td>
-<td>科创新源</td>
-<td>+1.44%</td>
-</tr>
-<tr>
-<td>11</td>
-<td>小家电</td>
-<td>-3.15%</td>
-<td>-0.63亿</td>
-<td>彩虹集团</td>
-<td>+0.97%</td>
-</tr>
-<tr>
-<td>12</td>
-<td>厨卫电器</td>
-<td>-3.39%</td>
-<td>-0.69亿</td>
-<td>火星人</td>
-<td>+0.64%</td>
-</tr>
-<tr>
-<td>13</td>
-<td>汽车服务及其他</td>
-<td>-1.65%</td>
-<td>-0.95亿</td>
-<td>华洋赛车</td>
-<td>+8.56%</td>
-</tr>
-<tr>
-<td>14</td>
-<td>美容护理</td>
-<td>-2.25%</td>
-<td>-0.95亿</td>
-<td>依依股份</td>
-<td>+10.02%</td>
-</tr>
-<tr>
-<td>15</td>
-<td>家居用品</td>
-<td>-2.05%</td>
-<td>-0.99亿</td>
-<td>太力科技</td>
-<td>+7.82%</td>
-</tr>
-<tr>
-<td>16</td>
-<td>贸易</td>
-<td>-2.97%</td>
-<td>-1.00亿</td>
-<td>江苏国泰</td>
-<td>+2.03%</td>
-</tr>
-<tr>
-<td>17</td>
-<td>非金属材料</td>
-<td>-2.69%</td>
-<td>-1.03亿</td>
-<td>长江材料</td>
-<td>+3.90%</td>
-</tr>
-<tr>
-<td>18</td>
-<td>包装印刷</td>
-<td>-1.71%</td>
-<td>-1.09亿</td>
-<td>奥瑞金</td>
-<td>+5.23%</td>
-</tr>
-<tr>
-<td>19</td>
-<td>互联网电商</td>
-<td>-2.22%</td>
-<td>-1.32亿</td>
-<td>吉宏股份</td>
-<td>+4.05%</td>
-</tr>
-<tr>
-<td>20</td>
-<td>公路铁路运输</td>
-<td>-1.97%</td>
-<td>-1.60亿</td>
-<td>山东高速</td>
-<td>+0.91%</td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="h9">表6 行业板块资金流入榜（5日合计·Top20，末列为5日合计）</h3>
+<tr><td>半导体</td><td><span class="down">-0.66%</span></td><td>66.62亿</td><td>芯朋微</td><td><span class="up">+16.80%</span></td><td>180.00</td></tr>
+<tr><td>通信设备</td><td><span class="up">+0.12%</span></td><td>35.69亿</td><td>朗威股份</td><td><span class="up">+19.99%</span></td><td>91.00</td></tr>
+<tr><td>银行</td><td><span class="up">+0.72%</span></td><td>22.11亿</td><td>中国银行</td><td><span class="up">+2.42%</span></td><td>84.00</td></tr>
+<tr><td>IT服务</td><td><span class="up">+1.61%</span></td><td>18.52亿</td><td>网宿科技</td><td><span class="up">+19.97%</span></td><td>130.00</td></tr>
+<tr><td>软件开发</td><td><span class="up">+1.54%</span></td><td>18.43亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>139.00</td></tr>
+<tr><td>通信服务</td><td><span class="up">+1.10%</span></td><td>9.10亿</td><td>二六三</td><td><span class="up">+10.09%</span></td><td>44.00</td></tr>
+<tr><td>油气开采及服务</td><td><span class="up">+3.52%</span></td><td>6.63亿</td><td>科力股份</td><td><span class="up">+11.13%</span></td><td>19.00</td></tr>
+<tr><td>房地产</td><td><span class="up">+0.20%</span></td><td>5.16亿</td><td>*ST发展</td><td><span class="up">+9.94%</span></td><td>88.00</td></tr>
+<tr><td>汽车服务及其他</td><td><span class="up">+0.30%</span></td><td>1.77亿</td><td>涛涛车业</td><td><span class="up">+7.83%</span></td><td>25.00</td></tr>
+<tr><td>公路铁路运输</td><td><span class="up">+0.88%</span></td><td>1.62亿</td><td>山东高速</td><td><span class="up">+10.03%</span></td><td>32.00</td></tr>
+</tbody></table></div><p class="tnote">数据源：同花顺行业资金流（净额单位：亿元）。</p>
+</section><section id="t6"><h3 id="t6">表6 · 概念板块资金流向 TOP15</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>行业</th>
-<th>阶段涨跌幅</th>
-<th>流入资金</th>
-<th>流出资金</th>
-<th>5日净流入(亿)</th>
-</tr>
-</thead>
+<thead><tr><th>概念</th><th>涨跌幅</th><th>今日净额(亿)</th><th>5日合计(亿)</th><th>领涨股</th><th>领涨股涨幅</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>半导体</td>
-<td>-2.42%</td>
-<td>2821.23亿</td>
-<td>2515.92亿</td>
-<td>305.30亿</td>
-</tr>
-<tr>
-<td>2</td>
-<td>元件</td>
-<td>-8.79%</td>
-<td>707.38亿</td>
-<td>568.24亿</td>
-<td>139.14亿</td>
-</tr>
-<tr>
-<td>3</td>
-<td>通信设备</td>
-<td>-4.43%</td>
-<td>992.82亿</td>
-<td>860.96亿</td>
-<td>131.86亿</td>
-</tr>
-<tr>
-<td>4</td>
-<td>消费电子</td>
-<td>-2.77%</td>
-<td>453.78亿</td>
-<td>343.91亿</td>
-<td>109.87亿</td>
-</tr>
-<tr>
-<td>5</td>
-<td>光学光电子</td>
-<td>-4.85%</td>
-<td>603.87亿</td>
-<td>524.17亿</td>
-<td>79.70亿</td>
-</tr>
-<tr>
-<td>6</td>
-<td>计算机设备</td>
-<td>-0.53%</td>
-<td>256.57亿</td>
-<td>177.46亿</td>
-<td>79.12亿</td>
-</tr>
-<tr>
-<td>7</td>
-<td>自动化设备</td>
-<td>0.22%</td>
-<td>404.79亿</td>
-<td>343.25亿</td>
-<td>61.54亿</td>
-</tr>
-<tr>
-<td>8</td>
-<td>光伏设备</td>
-<td>-4.38%</td>
-<td>247.14亿</td>
-<td>204.19亿</td>
-<td>42.96亿</td>
-</tr>
-<tr>
-<td>9</td>
-<td>通用设备</td>
-<td>2.14%</td>
-<td>353.42亿</td>
-<td>311.99亿</td>
-<td>41.43亿</td>
-</tr>
-<tr>
-<td>10</td>
-<td>军工电子</td>
-<td>0.27%</td>
-<td>167.26亿</td>
-<td>132.68亿</td>
-<td>34.57亿</td>
-</tr>
-<tr>
-<td>11</td>
-<td>IT服务</td>
-<td>-1.45%</td>
-<td>182.10亿</td>
-<td>152.39亿</td>
-<td>29.71亿</td>
-</tr>
-<tr>
-<td>12</td>
-<td>其他电子</td>
-<td>-4.48%</td>
-<td>158.50亿</td>
-<td>137.47亿</td>
-<td>21.03亿</td>
-</tr>
-<tr>
-<td>13</td>
-<td>电池</td>
-<td>-0.42%</td>
-<td>339.59亿</td>
-<td>318.93亿</td>
-<td>20.66亿</td>
-</tr>
-<tr>
-<td>14</td>
-<td>军工装备</td>
-<td>1.47%</td>
-<td>180.38亿</td>
-<td>160.34亿</td>
-<td>20.05亿</td>
-</tr>
-<tr>
-<td>15</td>
-<td>汽车零部件</td>
-<td>3.68%</td>
-<td>195.11亿</td>
-<td>176.19亿</td>
-<td>18.92亿</td>
-</tr>
-<tr>
-<td>16</td>
-<td>专用设备</td>
-<td>-0.23%</td>
-<td>234.58亿</td>
-<td>219.91亿</td>
-<td>14.66亿</td>
-</tr>
-<tr>
-<td>17</td>
-<td>电子化学品</td>
-<td>-7.44%</td>
-<td>406.59亿</td>
-<td>395.21亿</td>
-<td>11.37亿</td>
-</tr>
-<tr>
-<td>18</td>
-<td>白色家电</td>
-<td>3.23%</td>
-<td>86.34亿</td>
-<td>75.69亿</td>
-<td>10.65亿</td>
-</tr>
-<tr>
-<td>19</td>
-<td>软件开发</td>
-<td>-0.77%</td>
-<td>146.12亿</td>
-<td>136.50亿</td>
-<td>9.62亿</td>
-</tr>
-<tr>
-<td>20</td>
-<td>通信服务</td>
-<td>-2.99%</td>
-<td>62.55亿</td>
-<td>56.58亿</td>
-<td>5.97亿</td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="h10">表7 行业板块资金流出榜（当日·Top20）</h3>
+<tr><td>AI智能体</td><td><span class="up">+0.70%</span></td><td>54.77亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>云计算</td><td><span class="up">+1.86%</span></td><td>50.84亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>网络安全</td><td><span class="up">+2.06%</span></td><td>46.82亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>区块链</td><td><span class="up">+1.00%</span></td><td>46.48亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>多模态AI</td><td><span class="up">+0.60%</span></td><td>44.46亿</td><td>受限</td><td>网宿科技</td><td><span class="up">+19.97%</span></td></tr>
+<tr><td>AI应用</td><td><span class="up">+0.44%</span></td><td>42.08亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>ChatGPT概念</td><td><span class="up">+0.64%</span></td><td>39.65亿</td><td>受限</td><td>深信服</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>信创</td><td><span class="up">+1.49%</span></td><td>39.21亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>算力租赁</td><td><span class="up">+0.93%</span></td><td>38.21亿</td><td>受限</td><td>深信服</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>华为鲲鹏</td><td><span class="up">+1.98%</span></td><td>34.97亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>同花顺新质50</td><td><span class="down">-1.13%</span></td><td>33.45亿</td><td>受限</td><td>中科飞测</td><td><span class="up">+14.41%</span></td></tr>
+<tr><td>华为昇腾</td><td><span class="up">+1.90%</span></td><td>33.14亿</td><td>受限</td><td>众诚科技</td><td><span class="up">+16.48%</span></td></tr>
+<tr><td>鸿蒙概念</td><td><span class="up">+0.99%</span></td><td>31.56亿</td><td>受限</td><td>众诚科技</td><td><span class="up">+16.48%</span></td></tr>
+<tr><td>物联网</td><td><span class="down">-0.40%</span></td><td>30.39亿</td><td>受限</td><td>深信服</td><td><span class="up">+20.00%</span></td></tr>
+<tr><td>阿里巴巴概念</td><td><span class="up">+0.59%</span></td><td>29.66亿</td><td>受限</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td></tr>
+</tbody></table></div><p class="tnote">5日合计列：东财「板块资金流-5日」接口在本次环境被限流，今日暂以「受限」标注；主看今日主力净额。</p>
+</section><section id="t7"><h3 id="t7">表7 · 个股主力资金流向 TOP10</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>行业</th>
-<th>涨跌幅</th>
-<th>净流出</th>
-<th>领涨股</th>
-<th>领涨股涨跌幅</th>
-</tr>
-</thead>
+<thead><tr><th>代码</th><th>名称</th><th>封板资金</th><th>近5日涨幅%</th><th>连板数</th><th>所属行业</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>证券</td>
-<td>-2.54%</td>
-<td>-61.43亿</td>
-<td>天风证券</td>
-<td>+1.65%</td>
-</tr>
-<tr>
-<td>2</td>
-<td>通用设备</td>
-<td>-2.84%</td>
-<td>-44.97亿</td>
-<td>致远新能</td>
-<td>+14.43%</td>
-</tr>
-<tr>
-<td>3</td>
-<td>化学制药</td>
-<td>-4.17%</td>
-<td>-44.66亿</td>
-<td>亚虹医药</td>
-<td>+7.11%</td>
-</tr>
-<tr>
-<td>4</td>
-<td>汽车零部件</td>
-<td>-2.68%</td>
-<td>-38.26亿</td>
-<td>欣锐科技</td>
-<td>+12.72%</td>
-</tr>
-<tr>
-<td>5</td>
-<td>IT服务</td>
-<td>-3.40%</td>
-<td>-32.49亿</td>
-<td>辰安科技</td>
-<td>+4.15%</td>
-</tr>
-<tr>
-<td>6</td>
-<td>化学制品</td>
-<td>-2.70%</td>
-<td>-29.96亿</td>
-<td>晨光新材</td>
-<td>+10.01%</td>
-</tr>
-<tr>
-<td>7</td>
-<td>工业金属</td>
-<td>-2.72%</td>
-<td>-29.74亿</td>
-<td>丽岛新材</td>
-<td>+4.39%</td>
-</tr>
-<tr>
-<td>8</td>
-<td>电力</td>
-<td>-3.03%</td>
-<td>-28.31亿</td>
-<td>露笑科技</td>
-<td>+8.14%</td>
-</tr>
-<tr>
-<td>9</td>
-<td>软件开发</td>
-<td>-2.69%</td>
-<td>-23.78亿</td>
-<td>大恒科技</td>
-<td>+9.97%</td>
-</tr>
-<tr>
-<td>10</td>
-<td>军工装备</td>
-<td>-3.31%</td>
-<td>-23.67亿</td>
-<td>理工导航</td>
-<td>+6.55%</td>
-</tr>
-<tr>
-<td>11</td>
-<td>电网设备</td>
-<td>-3.09%</td>
-<td>-21.70亿</td>
-<td>白云电器</td>
-<td>+9.99%</td>
-</tr>
-<tr>
-<td>12</td>
-<td>农化制品</td>
-<td>-3.26%</td>
-<td>-21.30亿</td>
-<td>六国化工</td>
-<td>+3.14%</td>
-</tr>
-<tr>
-<td>13</td>
-<td>白酒</td>
-<td>-3.60%</td>
-<td>-19.96亿</td>
-<td>贵州茅台</td>
-<td>-1.50%</td>
-</tr>
-<tr>
-<td>14</td>
-<td>小金属</td>
-<td>-3.74%</td>
-<td>-19.29亿</td>
-<td>云南锗业</td>
-<td>+4.45%</td>
-</tr>
-<tr>
-<td>15</td>
-<td>白色家电</td>
-<td>-3.40%</td>
-<td>-19.18亿</td>
-<td>三星新材</td>
-<td>+4.99%</td>
-</tr>
-<tr>
-<td>16</td>
-<td>房地产</td>
-<td>-3.27%</td>
-<td>-18.65亿</td>
-<td>大名城</td>
-<td>+10.03%</td>
-</tr>
-<tr>
-<td>17</td>
-<td>元件</td>
-<td>-2.06%</td>
-<td>-17.60亿</td>
-<td>威尔高</td>
-<td>+20.00%</td>
-</tr>
-<tr>
-<td>18</td>
-<td>医疗服务</td>
-<td>-4.07%</td>
-<td>-17.05亿</td>
-<td>益诺思</td>
-<td>+1.66%</td>
-</tr>
-<tr>
-<td>19</td>
-<td>专用设备</td>
-<td>-2.54%</td>
-<td>-16.16亿</td>
-<td>正帆科技</td>
-<td>+10.56%</td>
-</tr>
-<tr>
-<td>20</td>
-<td>自动化设备</td>
-<td>-2.96%</td>
-<td>-15.96亿</td>
-<td>三丰智能</td>
-<td>+10.97%</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="h11">模块三：个股资金流向与题材概念</h2>
-<h3 id="h12">表8 个股主力资金净流入榜（当日·Top20）</h3>
+<tr><td>000977</td><td>浪潮信息</td><td>34.53亿</td><td>15.86</td><td>1.00</td><td>计算机设</td></tr>
+<tr><td>002396</td><td>星网锐捷</td><td>2.85亿</td><td>33.64</td><td>1.00</td><td>通信设备</td></tr>
+<tr><td>300017</td><td>网宿科技</td><td>2.74亿</td><td>11.27</td><td>1.00</td><td>IT服务Ⅱ</td></tr>
+<tr><td>002910</td><td>庄园牧场</td><td>2.35亿</td><td>13.53</td><td>1.00</td><td>饮料乳品</td></tr>
+<tr><td>300454</td><td>深信服</td><td>1.77亿</td><td>11.50</td><td>1.00</td><td>软件开发</td></tr>
+<tr><td>603881</td><td>数据港</td><td>1.63亿</td><td>-5.36</td><td>1.00</td><td>通信服务</td></tr>
+<tr><td>000524</td><td>岭南控股</td><td>1.56亿</td><td>7.55</td><td>1.00</td><td>旅游及景</td></tr>
+<tr><td>600756</td><td>浪潮软件</td><td>1.52亿</td><td>5.49</td><td>1.00</td><td>IT服务Ⅱ</td></tr>
+<tr><td>001208</td><td>华菱线缆</td><td>1.38亿</td><td>4.72</td><td>1.00</td><td>电网设备</td></tr>
+<tr><td>001365</td><td>天海电子</td><td>1.31亿</td><td>11.34</td><td>2.00</td><td>汽车零部</td></tr>
+</tbody></table></div><p class="tnote">东财「个股主力净流入排名」接口被限流，此处以涨停股封板资金强度（主力做多封单意愿）作为个股主力资金动向代理。</p>
+</section><section id="m3"><h3>模块三 · 涨停生态</h3></section><section id="t8"><h3 id="t8">表8 · 涨停池明细（共47只）</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>代码</th>
-<th>名称</th>
-<th>最新价</th>
-<th>涨跌幅</th>
-<th>主力净流入</th>
-</tr>
-</thead>
+<thead><tr><th>代码</th><th>名称</th><th>涨跌幅</th><th>最新价</th><th>成交额</th><th>封板资金</th><th>首封</th><th>炸板</th><th>连板</th><th>近5日%</th><th>行业</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>002185</td>
-<td>华天科技</td>
-<td>21.93</td>
-<td>+9.98%</td>
-<td>+35.25亿</td>
-</tr>
-<tr>
-<td>2</td>
-<td>002384</td>
-<td>东山精密</td>
-<td>236.87</td>
-<td>+5.53%</td>
-<td>+13.48亿</td>
-</tr>
-<tr>
-<td>3</td>
-<td>600206</td>
-<td>有研新材</td>
-<td>55.98</td>
-<td>+10.00%</td>
-<td>+11.48亿</td>
-</tr>
-<tr>
-<td>4</td>
-<td>300308</td>
-<td>中际旭创</td>
-<td>1121.90</td>
-<td>+2.09%</td>
-<td>+10.88亿</td>
-</tr>
-<tr>
-<td>5</td>
-<td>688041</td>
-<td>海光信息</td>
-<td>342.60</td>
-<td>+1.06%</td>
-<td>+8.45亿</td>
-</tr>
-<tr>
-<td>6</td>
-<td>002129</td>
-<td>TCL中环</td>
-<td>11.02</td>
-<td>+9.98%</td>
-<td>+8.05亿</td>
-</tr>
-<tr>
-<td>7</td>
-<td>600584</td>
-<td>长电科技</td>
-<td>100.99</td>
-<td>+6.20%</td>
-<td>+8.03亿</td>
-</tr>
-<tr>
-<td>8</td>
-<td>002281</td>
-<td>光迅科技</td>
-<td>221.67</td>
-<td>+6.05%</td>
-<td>+6.64亿</td>
-</tr>
-<tr>
-<td>9</td>
-<td>000977</td>
-<td>浪潮信息</td>
-<td>71.06</td>
-<td>+1.94%</td>
-<td>+6.27亿</td>
-</tr>
-<tr>
-<td>10</td>
-<td>603893</td>
-<td>瑞芯微</td>
-<td>190.71</td>
-<td>+8.28%</td>
-<td>+5.89亿</td>
-</tr>
-<tr>
-<td>11</td>
-<td>002617</td>
-<td>露笑科技</td>
-<td>9.70</td>
-<td>+8.14%</td>
-<td>+5.79亿</td>
-</tr>
-<tr>
-<td>12</td>
-<td>600360</td>
-<td>华微电子</td>
-<td>15.32</td>
-<td>+9.98%</td>
-<td>+5.70亿</td>
-</tr>
-<tr>
-<td>13</td>
-<td>002475</td>
-<td>立讯精密</td>
-<td>63.28</td>
-<td>+0.64%</td>
-<td>+5.33亿</td>
-</tr>
-<tr>
-<td>14</td>
-<td>300418</td>
-<td>昆仑万维</td>
-<td>44.61</td>
-<td>+3.62%</td>
-<td>+5.24亿</td>
-</tr>
-<tr>
-<td>15</td>
-<td>002558</td>
-<td>巨人网络</td>
-<td>29.09</td>
-<td>+6.01%</td>
-<td>+5.19亿</td>
-</tr>
-<tr>
-<td>16</td>
-<td>600246</td>
-<td>万通发展</td>
-<td>18.60</td>
-<td>+9.99%</td>
-<td>+5.01亿</td>
-</tr>
-<tr>
-<td>17</td>
-<td>300394</td>
-<td>天孚通信</td>
-<td>244.09</td>
-<td>+2.99%</td>
-<td>+4.70亿</td>
-</tr>
-<tr>
-<td>18</td>
-<td>600110</td>
-<td>诺德股份</td>
-<td>15.23</td>
-<td>+5.84%</td>
-<td>+4.41亿</td>
-</tr>
-<tr>
-<td>19</td>
-<td>688361</td>
-<td>中科飞测</td>
-<td>356.60</td>
-<td>+3.96%</td>
-<td>+4.26亿</td>
-</tr>
-<tr>
-<td>20</td>
-<td>002428</td>
-<td>云南锗业</td>
-<td>110.00</td>
-<td>+4.45%</td>
-<td>+4.19亿</td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="h13">表9 题材概念涨幅榜（eltdx题材映射增强）</h3>
+<tr><td>000524</td><td>岭南控股</td><td><span class="up">+10.06%</span></td><td>9.85</td><td>3027.80万</td><td>1.56亿</td><td>092500</td><td>0.00</td><td>1.00</td><td>7.55</td><td>旅游及景</td></tr>
+<tr><td>000977</td><td>浪潮信息</td><td><span class="up">+10.01%</span></td><td>78.17</td><td>31.93亿</td><td>34.53亿</td><td>092500</td><td>0.00</td><td>1.00</td><td>15.86</td><td>计算机设</td></tr>
+<tr><td>001208</td><td>华菱线缆</td><td><span class="up">+10.00%</span></td><td>14.85</td><td>1.04亿</td><td>1.38亿</td><td>092500</td><td>0.00</td><td>1.00</td><td>4.72</td><td>电网设备</td></tr>
+<tr><td>001229</td><td>魅视科技</td><td><span class="up">+9.99%</span></td><td>42.70</td><td>4825.47万</td><td>8046.87万</td><td>092500</td><td>0.00</td><td>2.00</td><td>15.62</td><td>计算机设</td></tr>
+<tr><td>603137</td><td>恒尚节能</td><td><span class="up">+9.99%</span></td><td>22.91</td><td>10.70亿</td><td>4743.62万</td><td>092503</td><td>1.00</td><td>7.00</td><td>49.96</td><td>装修装饰</td></tr>
+<tr><td>600756</td><td>浪潮软件</td><td><span class="up">+9.98%</span></td><td>13.23</td><td>7903.06万</td><td>1.52亿</td><td>093000</td><td>0.00</td><td>1.00</td><td>5.49</td><td>IT服务Ⅱ</td></tr>
+<tr><td>600749</td><td>西藏旅游</td><td><span class="up">+9.97%</span></td><td>15.33</td><td>2.62亿</td><td>3740.21万</td><td>093015</td><td>3.00</td><td>1.00</td><td>10.06</td><td>旅游及景</td></tr>
+<tr><td>603296</td><td>华勤技术</td><td><span class="up">+10.00%</span></td><td>78.29</td><td>38.54亿</td><td>7344.53万</td><td>093030</td><td>1.00</td><td>1.00</td><td>8.96</td><td>消费电子</td></tr>
+<tr><td>301251</td><td>威尔高</td><td><span class="up">+19.99%</span></td><td>60.92</td><td>13.54亿</td><td>243.56万</td><td>093033</td><td>9.00</td><td>2.00</td><td>20.58</td><td>元件</td></tr>
+<tr><td>002546</td><td>新联电子</td><td><span class="up">+10.04%</span></td><td>7.34</td><td>2.13亿</td><td>5456.41万</td><td>093048</td><td>3.00</td><td>1.00</td><td>0.26</td><td>电网设备</td></tr>
+<tr><td>603380</td><td>易德龙</td><td><span class="up">+10.00%</span></td><td>47.29</td><td>2.34亿</td><td>6921.36万</td><td>093049</td><td>0.00</td><td>1.00</td><td>4.08</td><td>消费电子</td></tr>
+<tr><td>600094</td><td>大名城</td><td><span class="up">+9.90%</span></td><td>4.22</td><td>7442.68万</td><td>7140.40万</td><td>093055</td><td>0.00</td><td>2.00</td><td>18.80</td><td>房地产开</td></tr>
+<tr><td>002841</td><td>视源股份</td><td><span class="up">+10.00%</span></td><td>47.39</td><td>13.48亿</td><td>3468.62万</td><td>093424</td><td>2.00</td><td>2.00</td><td>27.80</td><td>消费电子</td></tr>
+<tr><td>002396</td><td>星网锐捷</td><td><span class="up">+10.02%</span></td><td>29.10</td><td>15.64亿</td><td>2.85亿</td><td>093457</td><td>0.00</td><td>1.00</td><td>33.64</td><td>通信设备</td></tr>
+<tr><td>603496</td><td>恒为科技</td><td><span class="up">+10.00%</span></td><td>24.54</td><td>3.25亿</td><td>1.27亿</td><td>093723</td><td>0.00</td><td>1.00</td><td>6.61</td><td>计算机设</td></tr>
+<tr><td>600129</td><td>太极集团</td><td><span class="up">+10.00%</span></td><td>14.96</td><td>3.33亿</td><td>7764.25万</td><td>093816</td><td>3.00</td><td>1.00</td><td>9.48</td><td>中药Ⅱ</td></tr>
+<tr><td>301202</td><td>朗威股份</td><td><span class="up">+19.99%</span></td><td>39.19</td><td>1.70亿</td><td>9814.75万</td><td>093824</td><td>0.00</td><td>1.00</td><td>19.51</td><td>通信设备</td></tr>
+<tr><td>603928</td><td>兴业股份</td><td><span class="up">+10.02%</span></td><td>16.36</td><td>7.83亿</td><td>1.04亿</td><td>094438</td><td>1.00</td><td>1.00</td><td>14.46</td><td>塑料</td></tr>
+<tr><td>000759</td><td>中百集团</td><td><span class="up">+10.02%</span></td><td>6.48</td><td>4.02亿</td><td>1.13亿</td><td>095030</td><td>0.00</td><td>1.00</td><td>1.31</td><td>一般零售</td></tr>
+<tr><td>002490</td><td>山东墨龙</td><td><span class="up">+9.94%</span></td><td>6.97</td><td>3.53亿</td><td>4143.32万</td><td>095215</td><td>0.00</td><td>1.00</td><td>8.17</td><td>专用设备</td></tr>
+<tr><td>001207</td><td>联科科技</td><td><span class="up">+10.00%</span></td><td>16.28</td><td>2.20亿</td><td>5739.90万</td><td>095657</td><td>1.00</td><td>1.00</td><td>7.32</td><td>橡胶</td></tr>
+<tr><td>000506</td><td>招金黄金</td><td><span class="up">+10.00%</span></td><td>13.42</td><td>6.45亿</td><td>1.09亿</td><td>100027</td><td>0.00</td><td>1.00</td><td>17.61</td><td>贵金属</td></tr>
+<tr><td>300017</td><td>网宿科技</td><td><span class="up">+19.97%</span></td><td>14.66</td><td>40.51亿</td><td>2.74亿</td><td>100618</td><td>1.00</td><td>1.00</td><td>11.27</td><td>IT服务Ⅱ</td></tr>
+<tr><td>002350</td><td>北京科锐</td><td><span class="up">+10.00%</span></td><td>15.07</td><td>3.29亿</td><td>5042.03万</td><td>102015</td><td>0.00</td><td>1.00</td><td>11.71</td><td>电网设备</td></tr>
+<tr><td>002467</td><td>二六三</td><td><span class="up">+10.09%</span></td><td>4.69</td><td>3.98亿</td><td>9107.28万</td><td>102412</td><td>1.00</td><td>1.00</td><td>-0.62</td><td>通信服务</td></tr>
+<tr><td>002757</td><td>南兴股份</td><td><span class="up">+9.98%</span></td><td>18.41</td><td>2.73亿</td><td>8190.42万</td><td>102754</td><td>0.00</td><td>1.00</td><td>1.24</td><td>专用设备</td></tr>
+<tr><td>603881</td><td>数据港</td><td><span class="up">+10.00%</span></td><td>24.21</td><td>9.95亿</td><td>1.63亿</td><td>103146</td><td>0.00</td><td>1.00</td><td>-5.36</td><td>通信服务</td></tr>
+<tr><td>600602</td><td>云赛智联</td><td><span class="up">+10.01%</span></td><td>16.38</td><td>6.34亿</td><td>6372.48万</td><td>103155</td><td>1.00</td><td>1.00</td><td>1.12</td><td>软件开发</td></tr>
+<tr><td>000948</td><td>南天信息</td><td><span class="up">+10.03%</span></td><td>12.72</td><td>1.29亿</td><td>7454.70万</td><td>104224</td><td>0.00</td><td>1.00</td><td>4.96</td><td>软件开发</td></tr>
+<tr><td>002674</td><td>兴业科技</td><td><span class="up">+10.00%</span></td><td>29.15</td><td>7.42亿</td><td>6981.43万</td><td>104606</td><td>1.00</td><td>1.00</td><td>13.94</td><td>纺织制造</td></tr>
+<tr><td>603339</td><td>四方科技</td><td><span class="up">+10.03%</span></td><td>15.47</td><td>5.10亿</td><td>8085.25万</td><td>105711</td><td>2.00</td><td>1.00</td><td>7.51</td><td>通用设备</td></tr>
+<tr><td>002642</td><td>荣联科技</td><td><span class="up">+10.02%</span></td><td>6.70</td><td>1.96亿</td><td>2912.38万</td><td>110203</td><td>0.00</td><td>1.00</td><td>7.80</td><td>IT服务Ⅱ</td></tr>
+<tr><td>920857</td><td>泓禧科技</td><td><span class="up">+29.96%</span></td><td>19.00</td><td>1.10亿</td><td>1623.99万</td><td>110318</td><td>0.00</td><td>1.00</td><td>—</td><td>消费电子</td></tr>
+<tr><td>002910</td><td>庄园牧场</td><td><span class="up">+10.00%</span></td><td>12.87</td><td>3.87亿</td><td>2.35亿</td><td>110436</td><td>0.00</td><td>1.00</td><td>13.53</td><td>饮料乳品</td></tr>
+<tr><td>603661</td><td>恒林股份</td><td><span class="up">+10.00%</span></td><td>42.67</td><td>5.18亿</td><td>1835.07万</td><td>111131</td><td>1.00</td><td>1.00</td><td>3.99</td><td>家居用品</td></tr>
+<tr><td>600288</td><td>大恒科技</td><td><span class="up">+10.03%</span></td><td>17.11</td><td>19.53亿</td><td>5931.84万</td><td>111620</td><td>2.00</td><td>3.00</td><td>28.58</td><td>软件开发</td></tr>
+<tr><td>300454</td><td>深信服</td><td><span class="up">+20.00%</span></td><td>106.56</td><td>26.53亿</td><td>1.77亿</td><td>112042</td><td>1.00</td><td>1.00</td><td>11.50</td><td>软件开发</td></tr>
+<tr><td>603183</td><td>建研院</td><td><span class="up">+10.05%</span></td><td>4.05</td><td>2.21亿</td><td>2074.26万</td><td>130652</td><td>1.00</td><td>1.00</td><td>10.39</td><td>专业服务</td></tr>
+<tr><td>001365</td><td>天海电子</td><td><span class="up">+10.01%</span></td><td>47.81</td><td>9.73亿</td><td>1.31亿</td><td>130724</td><td>0.00</td><td>2.00</td><td>11.34</td><td>汽车零部</td></tr>
+<tr><td>002677</td><td>浙江美大</td><td><span class="up">+10.05%</span></td><td>6.57</td><td>1.33亿</td><td>3586.85万</td><td>130951</td><td>1.00</td><td>1.00</td><td>16.10</td><td>厨卫电器</td></tr>
+<tr><td>300369</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>6.48</td><td>5.40亿</td><td>4191.30万</td><td>131212</td><td>2.00</td><td>1.00</td><td>16.58</td><td>软件开发</td></tr>
+<tr><td>301321</td><td>翰博高新</td><td><span class="up">+20.00%</span></td><td>49.81</td><td>6.31亿</td><td>1.08亿</td><td>131251</td><td>0.00</td><td>1.00</td><td>14.69</td><td>光学光电</td></tr>
+<tr><td>002152</td><td>广电运通</td><td><span class="up">+10.04%</span></td><td>10.08</td><td>4.39亿</td><td>1.23亿</td><td>131906</td><td>0.00</td><td>1.00</td><td>6.67</td><td>计算机设</td></tr>
+<tr><td>002951</td><td>金时科技</td><td><span class="up">+9.97%</span></td><td>16.32</td><td>4.07亿</td><td>4380.12万</td><td>134903</td><td>0.00</td><td>2.00</td><td>21.06</td><td>其他电源</td></tr>
+<tr><td>603313</td><td>梦百合</td><td><span class="up">+9.97%</span></td><td>7.06</td><td>3.03亿</td><td>1.21亿</td><td>141101</td><td>0.00</td><td>1.00</td><td>14.66</td><td>家居用品</td></tr>
+<tr><td>603285</td><td>键邦股份</td><td><span class="up">+10.00%</span></td><td>48.42</td><td>4.16亿</td><td>1.11亿</td><td>141734</td><td>0.00</td><td>1.00</td><td>10.31</td><td>化学制品</td></tr>
+<tr><td>600350</td><td>山东高速</td><td><span class="up">+10.03%</span></td><td>13.49</td><td>1.52亿</td><td>956.55万</td><td>144950</td><td>2.00</td><td>1.00</td><td>17.95</td><td>铁路公路</td></tr>
+</tbody></table></div><p class="tnote">近5日涨幅由 eltdx 历史K线补全（不再标「暂无」）。共 47 只涨停。</p>
+</section><section id="t9"><h3 id="t9">表9 · 炸板池（共14只）</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>概念</th>
-<th>涉及家数</th>
-<th>平均涨跌幅</th>
-<th>代表股</th>
-<th>概念描述</th>
-</tr>
-</thead>
+<thead><tr><th>代码</th><th>名称</th><th>涨跌幅</th><th>最新价</th><th>成交额</th><th>首封</th><th>炸板</th><th>行业</th><th>概念</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>芯片</td>
-<td>22</td>
-<td>-1.78%</td>
-<td>魅视科技、大恒科技、有研新材</td>
-<td>涉及22只涨停/强势股；代表：魅视科技、大恒科技、有研新材</td>
-</tr>
-<tr>
-<td>2</td>
-<td>机器人概念</td>
-<td>22</td>
-<td>-2.64%</td>
-<td>雅化集团、视源股份、威尔高</td>
-<td>涉及22只涨停/强势股；代表：雅化集团、视源股份、威尔高</td>
-</tr>
-<tr>
-<td>3</td>
-<td>新能源车</td>
-<td>20</td>
-<td>-2.55%</td>
-<td>多利科技、圣龙股份、天海电子</td>
-<td>涉及20只涨停/强势股；代表：多利科技、圣龙股份、天海电子</td>
-</tr>
-<tr>
-<td>4</td>
-<td>近期强势</td>
-<td>20</td>
-<td>-3.29%</td>
-<td>恒尚节能、宜宾纸业、百合花</td>
-<td>涉及20只涨停/强势股；代表：恒尚节能、宜宾纸业、百合花</td>
-</tr>
-<tr>
-<td>5</td>
-<td>专精特新</td>
-<td>19</td>
-<td>-1.76%</td>
-<td>威尔高、魅视科技、大恒科技</td>
-<td>涉及19只涨停/强势股；代表：威尔高、魅视科技、大恒科技</td>
-</tr>
-<tr>
-<td>6</td>
-<td>人工智能</td>
-<td>16</td>
-<td>-2.72%</td>
-<td>视源股份、魅视科技、大恒科技</td>
-<td>涉及16只涨停/强势股；代表：视源股份、魅视科技、大恒科技</td>
-</tr>
-<tr>
-<td>7</td>
-<td>昨日振荡</td>
-<td>15</td>
-<td>-2.69%</td>
-<td>视源股份、华菱精工、力鼎光电</td>
-<td>涉及15只涨停/强势股；代表：视源股份、华菱精工、力鼎光电</td>
-</tr>
-<tr>
-<td>8</td>
-<td>5G概念</td>
-<td>14</td>
-<td>-2.29%</td>
-<td>威尔高、有研新材、万通发展</td>
-<td>涉及14只涨停/强势股；代表：威尔高、有研新材、万通发展</td>
-</tr>
-<tr>
-<td>9</td>
-<td>最近多板</td>
-<td>14</td>
-<td>-2.69%</td>
-<td>恒尚节能、魅视科技、宜宾纸业</td>
-<td>涉及14只涨停/强势股；代表：恒尚节能、魅视科技、宜宾纸业</td>
-</tr>
-<tr>
-<td>10</td>
-<td>新材料</td>
-<td>13</td>
-<td>-2.53%</td>
-<td>佛塑科技、宿迁联盛、双星新材</td>
-<td>涉及13只涨停/强势股；代表：佛塑科技、宿迁联盛、双星新材</td>
-</tr>
-<tr>
-<td>11</td>
-<td>昨日上榜</td>
-<td>13</td>
-<td>-3.68%</td>
-<td>恒尚节能、大恒科技、华菱精工</td>
-<td>涉及13只涨停/强势股；代表：恒尚节能、大恒科技、华菱精工</td>
-</tr>
-<tr>
-<td>12</td>
-<td>储能</td>
-<td>12</td>
-<td>-2.53%</td>
-<td>金时科技、宿迁联盛、天海电子</td>
-<td>涉及12只涨停/强势股；代表：金时科技、宿迁联盛、天海电子</td>
-</tr>
-<tr>
-<td>13</td>
-<td>半导体</td>
-<td>11</td>
-<td>+0.27%</td>
-<td>有研新材、有研硅、华天科技</td>
-<td>涉及11只涨停/强势股；代表：有研新材、有研硅、华天科技</td>
-</tr>
-<tr>
-<td>14</td>
-<td>江苏板块</td>
-<td>11</td>
-<td>-1.52%</td>
-<td>恒尚节能、宿迁联盛、双星新材</td>
-<td>涉及11只涨停/强势股；代表：恒尚节能、宿迁联盛、双星新材</td>
-</tr>
-<tr>
-<td>15</td>
-<td>浙江板块</td>
-<td>11</td>
-<td>-2.16%</td>
-<td>浙江东方、圣龙股份、百合花</td>
-<td>涉及11只涨停/强势股；代表：浙江东方、圣龙股份、百合花</td>
-</tr>
-<tr>
-<td>16</td>
-<td>最近异动</td>
-<td>11</td>
-<td>-2.94%</td>
-<td>魅视科技、双星新材、有研新材</td>
-<td>涉及11只涨停/强势股；代表：魅视科技、双星新材、有研新材</td>
-</tr>
-<tr>
-<td>17</td>
-<td>北京板块</td>
-<td>10</td>
-<td>-0.48%</td>
-<td>大恒科技、有研新材、万通发展</td>
-<td>涉及10只涨停/强势股；代表：大恒科技、有研新材、万通发展</td>
-</tr>
-<tr>
-<td>18</td>
-<td>广东板块</td>
-<td>10</td>
-<td>-1.89%</td>
-<td>视源股份、魅视科技、佛塑科技</td>
-<td>涉及10只涨停/强势股；代表：视源股份、魅视科技、佛塑科技</td>
-</tr>
-<tr>
-<td>19</td>
-<td>锂电池概念</td>
-<td>10</td>
-<td>-2.18%</td>
-<td>雅化集团、佛塑科技、双星新材</td>
-<td>涉及10只涨停/强势股；代表：雅化集团、佛塑科技、双星新材</td>
-</tr>
-<tr>
-<td>20</td>
-<td>消费电子概念</td>
-<td>10</td>
-<td>-2.29%</td>
-<td>视源股份、力鼎光电、双星新材</td>
-<td>涉及10只涨停/强势股；代表：视源股份、力鼎光电、双星新材</td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="h14">表10 重点个股题材概念映射（eltdx get_stock_topics 增强，无上涨家数占比）</h3>
+<tr><td>000938</td><td>紫光股份</td><td><span class="up">+6.80%</span></td><td>33.62</td><td>164.15亿</td><td>093000</td><td>2.00</td><td>IT服务Ⅱ</td><td>智能医疗、储能、6G概念、抖音概念、阿里概念、AI智能体、数字孪生、智慧政务</td></tr>
+<tr><td>300588</td><td>熙菱信息</td><td><span class="up">+17.19%</span></td><td>25.70</td><td>5.91亿</td><td>093512</td><td>1.00</td><td>计算机设</td><td>DeepSeek概念、人工智能、数据要素、时空大数据、信创、机器视觉、智慧政务、东数西算</td></tr>
+<tr><td>002038</td><td>双鹭药业</td><td><span class="up">+8.75%</span></td><td>6.34</td><td>5.60亿</td><td>094306</td><td>2.00</td><td>化学制药</td><td>幽门螺杆菌、智能医疗、减肥药、基因概念、创新药、肝炎概念、工业大麻、民营医院</td></tr>
+<tr><td>600488</td><td>津药药业</td><td><span class="up">+10.02%</span></td><td>5.49</td><td>9.95亿</td><td>095257</td><td>6.00</td><td>化学制药</td><td>创新药、辅助生殖、昨日弱势、最近异动、私募新进、地塞米松、原料药、医保目录</td></tr>
+<tr><td>600936</td><td>北投科技</td><td><span class="up">+4.33%</span></td><td>4.58</td><td>4.51亿</td><td>095712</td><td>2.00</td><td>IT服务Ⅱ</td><td>短剧游戏、AI智能体、无人机、机器人概念、华为鸿蒙、DeepSeek概念、智慧政务、乡村振兴</td></tr>
+<tr><td>601001</td><td>晋控煤业</td><td><span class="up">+6.55%</span></td><td>18.86</td><td>6.80亿</td><td>095902</td><td>1.00</td><td>煤炭开采</td><td>稀缺资源、周期股、自由现金流、养老金持股、券商重仓、社保重仓、国企改革、煤炭概念</td></tr>
+<tr><td>002104</td><td>恒宝股份</td><td><span class="up">+6.54%</span></td><td>10.43</td><td>9.10亿</td><td>110621</td><td>2.00</td><td>通信设备</td><td>量子科技、人工智能、芯片、消费电子概念、阿里概念、车联网、信息安全、一带一路</td></tr>
+<tr><td>688691</td><td>灿芯股份</td><td><span class="up">+15.87%</span></td><td>113.98</td><td>29.68亿</td><td>112028</td><td>2.00</td><td>半导体</td><td>先进封装、MCU芯片、小米概念、5G概念、上海自贸、卫星导航、存储芯片、芯片</td></tr>
+<tr><td>603893</td><td>瑞芯微</td><td><span class="up">+5.92%</span></td><td>202.00</td><td>89.34亿</td><td>112557</td><td>3.00</td><td>半导体</td><td>腾讯概念、人形机器人、机器视觉、机器人概念、智能家居、智能穿戴、AI眼镜、汽车芯片</td></tr>
+<tr><td>002137</td><td>实益达</td><td><span class="up">+2.54%</span></td><td>11.72</td><td>20.55亿</td><td>133142</td><td>2.00</td><td>光学光电</td><td>芯片、智能家居、新能源车、汽车电子、先进封装、粤港澳、网红经济、消费电子概念</td></tr>
+<tr><td>003013</td><td>地铁设计</td><td><span class="up">+8.06%</span></td><td>15.29</td><td>1.95亿</td><td>134633</td><td>1.00</td><td>工程咨询</td><td>无人机、腾讯概念、物联网、数字孪生、数据中心、低空经济、智能交通、乡村振兴</td></tr>
+<tr><td>688508</td><td>芯朋微</td><td><span class="up">+16.80%</span></td><td>98.09</td><td>19.15亿</td><td>135142</td><td>2.00</td><td>半导体</td><td>智能电网、人工智能、第三代半导体、高压快充、无人机、人形机器人、DeepSeek概念、数据中心</td></tr>
+<tr><td>603065</td><td>宿迁联盛</td><td><span class="up">+8.20%</span></td><td>21.91</td><td>15.83亿</td><td>144716</td><td>3.00</td><td>化学制品</td><td>光伏、职业教育、节能环保、储能、新材料、最近情绪指数、昨日首板、最近异动</td></tr>
+<tr><td>603178</td><td>圣龙股份</td><td><span class="up">+9.11%</span></td><td>17.84</td><td>6.72亿</td><td>145440</td><td>1.00</td><td>汽车零部</td><td>无人驾驶、飞行汽车、低空经济、减速器、汽车热管理、华为汽车、新能源车、最近情绪指数</td></tr>
+</tbody></table></div><p class="tnote">概念描述由 eltdx get_stock_topics 增强。共 14 只炸板。</p>
+</section><section id="t10"><h3 id="t10">表10 · 连板梯队与晋级率</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>代码</th>
-<th>名称</th>
-<th>核心题材概念</th>
-<th>概念描述(涨跌幅)</th>
-</tr>
-</thead>
+<thead><tr><th>连板数</th><th>今日家数</th><th>昨日(N-1)板家数</th><th>晋级率</th><th>代表个股</th><th>概念</th></tr></thead>
 <tbody>
-<tr>
-<td>1</td>
-<td>002841</td>
-<td>视源股份</td>
-<td>消费电子、广东板块、车联网、AI眼镜、智能穿戴</td>
-<td>消费电子(-0.81%)、广东板块(-1.89%)、车联网(-2.61%)、AI眼镜(-2.04%)、智能穿戴(-2.15%)</td>
-</tr>
-<tr>
-<td>2</td>
-<td>002185</td>
-<td>华天科技</td>
-<td>半导体、甘肃板块、5G概念、物联网、玻璃基板</td>
-<td>半导体(+0.27%)、甘肃板块(-0.50%)、5G概念(-2.29%)、物联网(-2.41%)、玻璃基板(-1.55%)</td>
-</tr>
-<tr>
-<td>3</td>
-<td>603137</td>
-<td>恒尚节能</td>
-<td>装修装饰、江苏板块、节能环保、装配式建筑、新型城镇</td>
-<td>装修装饰(-3.84%)、江苏板块(-1.52%)、节能环保(-2.61%)、装配式建筑(-2.92%)、新型城镇(-2.61%)</td>
-</tr>
-<tr>
-<td>4</td>
-<td>002497</td>
-<td>雅化集团</td>
-<td>能源金属、四川板块、国防军工、锂电池概念、固态电池</td>
-<td>能源金属(-0.68%)、四川板块(-1.92%)、国防军工(-2.79%)、锂电池概念(-2.18%)、固态电池(-1.66%)</td>
-</tr>
-<tr>
-<td>5</td>
-<td>600206</td>
-<td>有研新材</td>
-<td>半导体、北京板块、5G概念、国防军工、稀土永磁</td>
-<td>半导体(+0.27%)、北京板块(-0.48%)、5G概念(-2.29%)、国防军工(-2.79%)、稀土永磁(-1.67%)</td>
-</tr>
-<tr>
-<td>6</td>
-<td>001365</td>
-<td>天海电子</td>
-<td>汽车零部件、河南板块、低空经济、次新股、PCB概念</td>
-<td>汽车零部件(-2.14%)、河南板块(-2.56%)、低空经济(-2.66%)、次新股(-0.96%)、PCB概念(-2.33%)</td>
-</tr>
-<tr>
-<td>7</td>
-<td>600120</td>
-<td>浙江东方</td>
-<td>多元金融、浙江板块、创投概念、量子科技、破净资产</td>
-<td>多元金融(-1.53%)、浙江板块(-2.16%)、创投概念(-2.67%)、量子科技(-2.58%)、破净资产(-0.32%)</td>
-</tr>
-<tr>
-<td>8</td>
-<td>301251</td>
-<td>威尔高</td>
-<td>元器件、江西板块、5G概念、PCB概念、CPO概念</td>
-<td>元器件(-1.55%)、江西板块(-2.78%)、5G概念(-2.29%)、PCB概念(-2.33%)、CPO概念(-2.30%)</td>
-</tr>
-<tr>
-<td>9</td>
-<td>002585</td>
-<td>双星新材</td>
-<td>塑料、江苏板块、锂电池概念、光伏、折叠屏</td>
-<td>塑料(-2.59%)、江苏板块(-1.52%)、锂电池概念(-2.18%)、光伏(-2.39%)、折叠屏(-2.36%)</td>
-</tr>
-<tr>
-<td>10</td>
-<td>002129</td>
-<td>TCL中环</td>
-<td>光伏设备、天津板块、光伏、商业航天、苹果概念</td>
-<td>光伏设备(-0.35%)、天津板块(-0.38%)、光伏(-2.39%)、商业航天(-2.77%)、苹果概念(-2.27%)</td>
-</tr>
-<tr>
-<td>11</td>
-<td>003004</td>
-<td>声迅股份</td>
-<td>IT设备、北京板块、国防军工、低空经济、含可转债</td>
-<td>IT设备(-1.38%)、北京板块(-0.48%)、国防军工(-2.79%)、低空经济(-2.66%)、含可转债(-1.50%)</td>
-</tr>
-<tr>
-<td>12</td>
-<td>001229</td>
-<td>魅视科技</td>
-<td>IT设备、广东板块、智能电网、军工信息化、商业航天</td>
-<td>IT设备(-1.38%)、广东板块(-1.89%)、智能电网(-2.72%)、军工信息化(-3.07%)、商业航天(-2.77%)</td>
-</tr>
-<tr>
-<td>13</td>
-<td>603356</td>
-<td>华菱精工</td>
-<td>专用设备、安徽板块、光伏、风电、昨日弱势</td>
-<td>专用设备(-2.25%)、安徽板块(-2.25%)、光伏(-2.39%)、风电(-2.96%)、昨日弱势(-2.50%)</td>
-</tr>
-<tr>
-<td>14</td>
-<td>002951</td>
-<td>金时科技</td>
-<td>包装印刷、四川板块、风电、储能、超级电容</td>
-<td>包装印刷(-1.62%)、四川板块(-1.92%)、风电(-2.96%)、储能(-2.53%)、超级电容(-2.45%)</td>
-</tr>
-<tr>
-<td>15</td>
-<td>600360</td>
-<td>华微电子</td>
-<td>半导体、吉林板块、风电、充电桩、第三代半导体</td>
-<td>半导体(+0.27%)、吉林板块(-1.83%)、风电(-2.96%)、充电桩(-2.67%)、第三代半导体(-0.94%)</td>
-</tr>
-<tr>
-<td>16</td>
-<td>688432</td>
-<td>有研硅</td>
-<td>半导体、北京板块、智能电网、存储芯片、绿色电力</td>
-<td>半导体(+0.27%)、北京板块(-0.48%)、智能电网(-2.72%)、存储芯片(-1.14%)、绿色电力(-2.69%)</td>
-</tr>
-<tr>
-<td>17</td>
-<td>601121</td>
-<td>宝地矿业</td>
-<td>冶钢原料、新疆板块、黄金概念、并购重组股、破增发价</td>
-<td>冶钢原料(-1.27%)、新疆板块(-3.20%)、黄金概念(-3.17%)、并购重组股(-1.36%)、破增发价(-1.10%)</td>
-</tr>
-<tr>
-<td>18</td>
-<td>600094</td>
-<td>大名城</td>
-<td>房地产开发、上海板块、含B股、5G概念、低空经济</td>
-<td>房地产开发(-2.63%)、上海板块(-1.54%)、含B股(-2.48%)、5G概念(-2.29%)、低空经济(-2.66%)</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="h15">模块四：历史K线与综合研判</h2>
-<h3 id="h16">表11 重点个股历史日涨跌幅（eltdx get_kline 补全）</h3>
+<tr><td>7板</td><td>1.00</td><td>1.00</td><td>100.0%</td><td>1只</td><td>装配式建筑、节能环保、新型城镇、BIPV概念、最近情绪指数、最近多板、昨日连板、近期新高</td></tr>
+<tr><td>3板</td><td>1.00</td><td>3.00</td><td>33.3%</td><td>1只</td><td>芯片、数据要素、AIGC概念、量子科技、无人机、元宇宙概念、人工智能、6G概念</td></tr>
+<tr><td>2板</td><td>6.00</td><td>28.00</td><td>21.4%</td><td>6只（魅视科技、威尔高、大名城 等）</td><td>低空经济、无人驾驶、人形机器人、机器人概念、工业互联、一带一路、次新股、储能</td></tr>
+<tr><td>1板</td><td>39.00</td><td>—</td><td>—（首板）</td><td>39只（岭南控股、浪潮信息、华菱线缆 等）</td><td>水利建设、腾讯概念、DeepSeek概念、信息安全、车联网、无人驾驶、英伟达概念、液冷服务器</td></tr>
+</tbody></table></div><p class="tnote">晋级率=今日N板家数/昨日(N-1)板家数；整体连板晋级率 24.2%。概念由 eltdx 代表个股题材增强。</p>
+</section><section id="m4"><h3>模块四 · 题材概念与研判</h3></section><section id="t11"><h3 id="t11">表11 · 题材概念涨幅榜 TOP15</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>近5日逐日涨跌幅</th>
-<th>5日累计</th>
-<th>10日累计</th>
-<th>最新价</th>
-</tr>
-</thead>
+<thead><tr><th>概念</th><th>涨幅%</th><th>净额(亿)</th><th>领涨股</th><th>领涨股涨幅</th><th>公司家数</th></tr></thead>
 <tbody>
-<tr>
-<td>视源股份</td>
-<td>+5.27% / -2.23% / +7.88% / +2.14% / +10.01%</td>
-<td>+23.07%</td>
-<td>+22.42%</td>
-<td>43.08</td>
-</tr>
-<tr>
-<td>华天科技</td>
-<td>-2.02% / -7.27% / -3.75% / +2.20% / +9.98%</td>
-<td>-0.86%</td>
-<td>+8.53%</td>
-<td>21.93</td>
-</tr>
-<tr>
-<td>恒尚节能</td>
-<td>+9.97% / +9.98% / +10.03% / +9.99% / +9.98%</td>
-<td>+49.95%</td>
-<td>+56.79%</td>
-<td>20.83</td>
-</tr>
-<tr>
-<td>雅化集团</td>
-<td>+3.09% / +4.10% / +0.05% / +2.47% / +10.00%</td>
-<td>+19.71%</td>
-<td>+10.25%</td>
-<td>24.65</td>
-</tr>
-<tr>
-<td>有研新材</td>
-<td>-10.00% / -3.55% / -6.07% / -6.28% / +10.00%</td>
-<td>-15.90%</td>
-<td>+20.81%</td>
-<td>55.98</td>
-</tr>
-<tr>
-<td>天海电子</td>
-<td>+10.00% / -3.77% / +1.88% / -6.77% / +10.00%</td>
-<td>+11.34%</td>
-<td>+1.16%</td>
-<td>43.46</td>
-</tr>
-<tr>
-<td>浙江东方</td>
-<td>+3.26% / -1.13% / +0.46% / +0.68% / +9.91%</td>
-<td>+13.18%</td>
-<td>+5.04%</td>
-<td>4.88</td>
-</tr>
-<tr>
-<td>威尔高</td>
-<td>-2.87% / -7.65% / -3.43% / -8.32% / +20.00%</td>
-<td>-2.27%</td>
-<td>-1.24%</td>
-<td>50.77</td>
-</tr>
-<tr>
-<td>双星新材</td>
-<td>-3.06% / -4.91% / -3.41% / -6.34% / +9.96%</td>
-<td>-7.76%</td>
-<td>-23.01%</td>
-<td>11.37</td>
-</tr>
-<tr>
-<td>TCL中环</td>
-<td>-1.00% / -7.31% / -5.98% / -3.38% / +9.98%</td>
-<td>-7.69%</td>
-<td>+7.75%</td>
-<td>11.02</td>
-</tr>
-<tr>
-<td>声迅股份</td>
-<td>-2.73% / -6.73% / -1.58% / -0.18% / +10.00%</td>
-<td>-1.22%</td>
-<td>+12.73%</td>
-<td>79.95</td>
-</tr>
-<tr>
-<td>魅视科技</td>
-<td>+1.71% / +1.52% / -5.92% / +0.03% / +10.00%</td>
-<td>+7.34%</td>
-<td>+41.03%</td>
-<td>38.82</td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="h17">表12 核心研判汇总</h3>
+<tr><td>国资云</td><td><span class="up">+3.03%</span></td><td>-27.21亿</td><td>锐捷网络</td><td><span class="up">+11.63%</span></td><td>54.00</td></tr>
+<tr><td>华为欧拉</td><td><span class="up">+2.13%</span></td><td>12.36亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>47.00</td></tr>
+<tr><td>财税数字化</td><td><span class="up">+2.09%</span></td><td>12.08亿</td><td>南天信息</td><td><span class="up">+10.04%</span></td><td>65.00</td></tr>
+<tr><td>数据安全</td><td><span class="up">+2.08%</span></td><td>27.13亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>174.00</td></tr>
+<tr><td>网络安全</td><td><span class="up">+2.06%</span></td><td>46.82亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>195.00</td></tr>
+<tr><td>华为鲲鹏</td><td><span class="up">+1.98%</span></td><td>34.97亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>175.00</td></tr>
+<tr><td>国产操作系统</td><td><span class="up">+1.97%</span></td><td>6.11亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>134.00</td></tr>
+<tr><td>MLOps概念</td><td><span class="up">+1.96%</span></td><td>1.81亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>18.00</td></tr>
+<tr><td>智慧政务</td><td><span class="up">+1.92%</span></td><td>23.22亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>218.00</td></tr>
+<tr><td>华为昇腾</td><td><span class="up">+1.90%</span></td><td>33.14亿</td><td>众诚科技</td><td><span class="up">+16.48%</span></td><td>105.00</td></tr>
+<tr><td>云计算</td><td><span class="up">+1.86%</span></td><td>50.84亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>218.00</td></tr>
+<tr><td>数字货币</td><td><span class="up">+1.77%</span></td><td>11.41亿</td><td>奇安信</td><td><span class="up">+11.30%</span></td><td>91.00</td></tr>
+<tr><td>跨境支付(CIPS)</td><td><span class="up">+1.76%</span></td><td>26.59亿</td><td>奇安信</td><td><span class="up">+11.30%</span></td><td>73.00</td></tr>
+<tr><td>数字水印</td><td><span class="up">+1.71%</span></td><td>3.77亿</td><td>绿盟科技</td><td><span class="up">+20.00%</span></td><td>30.00</td></tr>
+<tr><td>云办公</td><td><span class="up">+1.63%</span></td><td>9.89亿</td><td>深信服</td><td><span class="up">+20.00%</span></td><td>48.00</td></tr>
+</tbody></table></div><p class="tnote">按概念指数涨幅排序（同花顺）。</p>
+</section><section id="t12"><h3 id="t12">表12 · 龙虎榜资金动向 TOP15（共96只）</h3>
 <div class="table-wrap"><table>
-<thead>
-<tr>
-<th>维度</th>
-<th>核心结论</th>
-</tr>
-</thead>
+<thead><tr><th>代码</th><th>名称</th><th>收盘价</th><th>涨跌幅</th><th>龙虎榜净买额</th><th>解读</th><th>上榜原因</th></tr></thead>
 <tbody>
-<tr>
-<td>指数</td>
-<td>上证指数 -1.26%、深证成指 -1.24%、创业板指 -0.94%、科创50 +0.28%、沪深300 -1.03%、上证50 -1.22%</td>
-</tr>
-<tr>
-<td>情绪</td>
-<td>涨停33/跌停30/炸板23，封板率58.9%，晋级率7.8%</td>
-</tr>
-<tr>
-<td>宽度</td>
-<td>上涨634/下跌4520（普跌）</td>
-</tr>
-<tr>
-<td>行业5日资金</td>
-<td>半导体(+305.3亿)、元件(+139.1亿)、通信设备(+131.9亿)</td>
-</tr>
-<tr>
-<td>个股主力净流入</td>
-<td>华天科技(+35.3亿)、东山精密(+13.5亿)、有研新材(+11.5亿)</td>
-</tr>
-<tr>
-<td>最强题材</td>
-<td>芯片、机器人概念、新能源车</td>
-</tr>
-<tr>
-<td>连板高度</td>
-<td>最高6板，连板5家</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="h18">研判</h2>
-<ol>
-<li><strong>指数与宽度</strong>：三大指数同步回调（上证 -1.26%、深证 -1.24%、创业板 -0.94%），全市场上涨仅 634 家、下跌 4520 家，呈典型普跌格局，赚钱效应低迷。</li>
-<li><strong>情绪与连板</strong>：涨停 33 家、跌停 30 家，连板仅 5 家、最高板 6 板，封板率 58.9%，昨日涨停晋级率 7.8%。连板高度受限、炸板数量偏高，说明资金追高意愿弱、分歧加大。</li>
-<li><strong>资金方向</strong>：行业层面5日主力净流入居前为 半导体(+305.3亿)、元件(+139.1亿)、通信设备(+131.9亿)；个股主力净流入居前为 华天科技(+35.3亿)、东山精密(+13.5亿)、有研新材(+11.5亿)。防御与景气分歧并存，资金更偏向低位与事件驱动。</li>
-<li><strong>题材脉络</strong>：涨停/强势股集中分布于 芯片、机器人概念、新能源车 等方向，题材以事件驱动与超跌反弹为主，缺乏持续主线，轮动速度快。</li>
-<li><strong>策略提示</strong>：普跌日宜控仓观望，关注次日集合竞价与连板高度能否打开；若指数企稳、涨跌家数比修复，可沿5日资金净流入行业与辨识度个股试错。以上为数据复盘，不构成投资建议。</li>
-</ol>
-<hr/>
-<p><em>本报告由三源数据（东方财富Choice、同花顺、akshare、eltdx通达信）自动采集与交叉校验生成，历史K线与题材概念经 eltdx 补全，数据以交易所及行情商为准。</em></p>
-<p class="foot">本报告由东方财富Choice / 同花顺 / akshare / eltdx（通达信）三源数据自动采集与交叉校验生成，历史K线与题材概念经 eltdx 补全。数据以交易所及行情商为准，不构成投资建议。</p>
-</div>
-
+<tr><td>000977</td><td>浪潮信息</td><td>78.17</td><td><span class="up">+10.01%</span></td><td>7.31亿</td><td>2家机构买入，成功率48.95%</td><td>连续三个交易日内，涨幅偏离值</td></tr>
+<tr><td>300017</td><td>网宿科技</td><td>14.66</td><td><span class="up">+19.97%</span></td><td>5.87亿</td><td>1家机构买入，成功率47.67%</td><td>日涨幅达到15%的前5只证券</td></tr>
+<tr><td>000977</td><td>浪潮信息</td><td>78.17</td><td><span class="up">+10.01%</span></td><td>5.01亿</td><td>普通席位买入，成功率60.21%</td><td>日涨幅偏离值达到7%的前5只</td></tr>
+<tr><td>300821</td><td>东岳硅材</td><td>26.44</td><td><span class="up">+13.48%</span></td><td>4.64亿</td><td>3家机构买入，成功率44.43%</td><td>连续三个交易日内，涨幅偏离值</td></tr>
+<tr><td>300454</td><td>深信服</td><td>106.56</td><td><span class="up">+20.00%</span></td><td>3.88亿</td><td>3家机构买入，成功率46.28%</td><td>日涨幅达到15%的前5只证券</td></tr>
+<tr><td>002709</td><td>天赐材料</td><td>44.59</td><td><span class="down">-9.99%</span></td><td>1.60亿</td><td>主力做T，成功率51.60%</td><td>日跌幅偏离值达到7%的前5只</td></tr>
+<tr><td>603678</td><td>火炬电子</td><td>62.32</td><td><span class="down">-9.99%</span></td><td>1.36亿</td><td>4家机构卖出，成功率46.58%</td><td>非S证券连续三个交易日内收盘</td></tr>
+<tr><td>002396</td><td>星网锐捷</td><td>29.10</td><td><span class="up">+10.02%</span></td><td>1.32亿</td><td>普通席位买入，成功率44.91%</td><td>日涨幅偏离值达到7%的前5只</td></tr>
+<tr><td>002951</td><td>金时科技</td><td>16.32</td><td><span class="up">+9.97%</span></td><td>1.03亿</td><td>1家机构买入，成功率44.77%</td><td>连续三个交易日内，涨幅偏离值</td></tr>
+<tr><td>001399</td><td>惠科股份</td><td>35.53</td><td><span class="up">+2.16%</span></td><td>1.03亿</td><td>5家机构买入，成功率29.12%</td><td>日换手率达到20%的前5只证</td></tr>
+<tr><td>002951</td><td>金时科技</td><td>16.32</td><td><span class="up">+9.97%</span></td><td>8173.66万</td><td>2家机构买入，成功率45.74%</td><td>日振幅值达到15%的前5只证</td></tr>
+<tr><td>301321</td><td>翰博高新</td><td>49.81</td><td><span class="up">+20.00%</span></td><td>7984.03万</td><td>4家机构买入，成功率40.37%</td><td>日涨幅达到15%的前5只证券</td></tr>
+<tr><td>002428</td><td>云南锗业</td><td>99.00</td><td><span class="down">-10.00%</span></td><td>6509.75万</td><td>3家机构卖出，成功率27.35%</td><td>日跌幅偏离值达到7%的前5只</td></tr>
+<tr><td>001229</td><td>魅视科技</td><td>42.70</td><td><span class="up">+9.99%</span></td><td>5588.48万</td><td>买一主买，成功率41.11%</td><td>连续三个交易日内，涨幅偏离值</td></tr>
+<tr><td>600756</td><td>浪潮软件</td><td>13.23</td><td><span class="up">+9.98%</span></td><td>5334.09万</td><td>买一主买，成功率38.80%</td><td>单只标的证券的当日融资买入数</td></tr>
+</tbody></table></div><p class="tnote">按龙虎榜净买额排序，共 96 只上榜。</p>
+</section><section id="verdict"><h3 id="verdict">研判</h3>
+<div class="verdict">**综合研判（仅供参考，非投资建议）**：
+- **大势**：上涨占比仅 28.8%、跌停(93)多于涨停(80)，量能 2.58万亿 属中性，指数层面除科创50外全线调整，短线偏防御。
+- **情绪**：情绪温度计 50.8/100（中性偏弱），封板率 77.0% 尚健康但连板梯队偏薄（仅 8 只连板），追高性价比一般。
+- **资金**：主力净流入集中在「半导体」等行业与「国资云」等概念；连板高度靠 7 板 恒尚节能 支撑，观察其能否打开空间。
+- **策略**：控制仓位、回避高位放量滞涨；关注资金持续流入的行业/概念龙头与首板补涨，等待涨跌家数占比回升至 50% 上方再提升风险偏好。</div>
+</section>
+<footer>数据源：akshare(同花顺/新浪)+东方财富；eltdx(通达信)补充题材与历史K线 ｜ 本报告自动生成，仅供研究参考，不构成投资建议。</footer>
+</main></div>
 <script>
-function toggleTheme(){document.body.classList.toggle('light');}
-// scroll-spy
-const items=[...document.querySelectorAll('.nav-item')];
-const map=new Map(items.map(it=>[it.dataset.target, it]));
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      items.forEach(i=>i.classList.remove('active'));
-      const a=map.get(e.target.id); if(a)a.classList.add('active');
-    }
-  });
-},{rootMargin:'-10% 0px -75% 0px',threshold:0});
-document.querySelectorAll('h2,h3').forEach(h=>obs.observe(h));
-// 点击平滑滚动
-items.forEach(it=>it.addEventListener('click',ev=>{ev.preventDefault();const t=document.getElementById(it.dataset.target);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}));
-</script>
-
-</body>
-</html>
+document.getElementById('themeBtn').onclick=function(){document.body.classList.toggle('dark');};
+const links=[...document.querySelectorAll('nav a')];
+const map={};links.forEach(a=>map[a.dataset.target]=a);
+const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map[e.target.id];if(a)a.classList.add('active');}});},{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+</script></body></html>
