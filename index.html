@@ -1,457 +1,409 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A股市场情绪日报 · 2026-07-21</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A股金融市场情绪日报 2026年07月21日</title>
 <style>
-:root {
-  --bg: #0d1117;
-  --bg-card: #161b22;
-  --bg-table: #1c2128;
-  --border: #30363d;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
-  --up: #f85149;
-  --down: #3fb950;
-  --flat: #8b949e;
-  --accent: #58a6ff;
-  --accent2: #bc8cff;
-  --zt: #ff4d4f;
-  --dt: #52c41a;
-  --lb: #faad14;
-  --jtjb: #722ed1;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding: 0;
-}
-.header {
-  background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
-  border-bottom: 1px solid var(--border);
-  padding: 24px 32px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-}
-.header h1 {
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-.header .meta {
-  color: var(--text-muted);
-  font-size: 12px;
-}
-.nav {
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
-.nav a {
-  display: inline-block;
-  padding: 8px 16px;
-  background: var(--bg-card);
-  color: var(--accent);
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 13px;
-  border: 1px solid var(--border);
-  transition: all 0.2s;
-}
-.nav a:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-.nav a .nav-num {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  text-align: center;
-  background: rgba(88,166,255,0.2);
-  border-radius: 4px;
-  margin-right: 6px;
-  font-size: 11px;
-}
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 24px 32px;
-}
-.module {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 24px;
-  margin-bottom: 24px;
-}
-.module-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.module-title .num {
-  display: inline-block;
-  background: var(--accent);
-  color: #fff;
-  width: 36px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
-}
-.sub-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 24px 0 12px;
-  color: var(--accent2);
-  padding-left: 10px;
-  border-left: 3px solid var(--accent2);
-}
-.table-title {
-  font-size: 14px;
-  font-weight: 600;
-  margin: 16px 0 8px;
-  color: var(--text);
-}
-.hint {
-  color: var(--text-muted);
-  font-size: 13px;
-  margin: 8px 0 12px;
-  padding: 8px 12px;
-  background: rgba(88,166,255,0.06);
-  border-radius: 6px;
-}
-.hint b { color: var(--accent); }
-.idx-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.idx-card {
-  background: var(--bg-table);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
-}
-.idx-name { font-size: 13px; color: var(--text-muted); }
-.idx-close { font-size: 24px; font-weight: 700; margin: 4px 0; }
-.idx-pct { font-size: 16px; font-weight: 600; }
-.idx-pct.up { color: var(--up); }
-.idx-pct.down { color: var(--down); }
-.idx-pct.flat { color: var(--flat); }
-.idx-amt { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  margin: 16px 0;
-}
-.sum-card {
-  background: var(--bg-table);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-}
-.sum-card.zt { border-left: 4px solid var(--zt); }
-.sum-card.dt { border-left: 4px solid var(--dt); }
-.sum-card.lb { border-left: 4px solid var(--lb); }
-.sum-card.jtjb { border-left: 4px solid var(--jtjb); }
-.sum-val { font-size: 22px; font-weight: 700; color: var(--text); }
-.sum-card.zt .sum-val { color: var(--zt); }
-.sum-card.dt .sum-val { color: var(--dt); }
-.sum-card.lb .sum-val { color: var(--lb); }
-.sum-card.jtjb .sum-val { color: var(--jtjb); }
-.sum-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-.sum-sub { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
-.up { color: var(--up); }
-.down { color: var(--down); }
-.flat { color: var(--flat); }
-.muted { color: var(--text-muted); font-size: 12px; }
-.lb-badge {
-  display: inline-block;
-  background: var(--lb);
-  color: #000;
-  padding: 1px 8px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 12px;
-}
-.jtjb-badge {
-  display: inline-block;
-  background: var(--jtjb);
-  color: #fff;
-  padding: 1px 8px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 12px;
-}
-.zt-num { color: var(--zt); font-size: 18px; }
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  margin-bottom: 16px;
-  background: var(--bg-table);
-}
-.data-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 13px;
-  white-space: nowrap;
-}
-.data-table th, .data-table td {
-  padding: 8px 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-}
-.data-table th {
-  background: #21262d;
-  color: var(--accent);
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-.data-table th.sticky-col, .data-table td.sticky-col {
-  position: sticky;
-  left: 0;
-  background: var(--bg-table);
-  z-index: 3;
-  min-width: 100px;
-}
-.data-table th.sticky-col {
-  background: #21262d;
-  z-index: 4;
-}
-.data-table tbody tr:hover {
-  background: rgba(88,166,255,0.05);
-}
-.data-table tbody tr:hover td.sticky-col {
-  background: rgba(88,166,255,0.08);
-}
-.signals {
-  background: rgba(252,184,31,0.06);
-  border: 1px solid rgba(252,184,31,0.3);
-  border-radius: 8px;
-  padding: 16px;
-  margin: 12px 0;
-}
-.signal-title { color: var(--lb); font-weight: 600; margin-bottom: 8px; }
-.signal-item {
-  font-size: 13px;
-  padding: 4px 0;
-  list-style: none;
-  padding-left: 16px;
-  position: relative;
-}
-.signal-item::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--lb);
-}
-.empty { color: var(--text-muted); padding: 20px; text-align: center; }
-.chart-container { margin: 16px 0; }
-.chart-group { display: flex; flex-direction: column; gap: 12px; }
-.chart-container svg { max-width: 100%; height: auto; }
-.footer {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 12px;
-  padding: 24px;
-  border-top: 1px solid var(--border);
-  margin-top: 24px;
-}
-.footer a { color: var(--accent); text-decoration: none; }
-@media (max-width: 768px) {
-  .container { padding: 16px; }
-  .header { padding: 16px; }
-  .module { padding: 16px; }
-}
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif;
+         background:#f4f6fa; color:#222831; line-height:1.6; }
+  .wrap { max-width:880px; margin:0 auto; padding:18px 16px 40px; }
+  header { background:linear-gradient(135deg,#1f3a8a,#2b5fe3); color:#fff; border-radius:16px;
+            padding:22px 24px; box-shadow:0 6px 20px rgba(43,95,227,.25); }
+  header h1 { margin:0 0 4px; font-size:22px; }
+  header .sub { opacity:.9; font-size:13px; }
+  .badge { display:inline-block; background:rgba(255,255,255,.18); border-radius:20px;
+            padding:2px 12px; font-size:12px; margin-top:8px; }
+  section { background:#fff; border-radius:14px; padding:18px 20px; margin-top:16px;
+             box-shadow:0 2px 10px rgba(0,0,0,.05); }
+  h2 { font-size:17px; margin:0 0 14px; padding-left:10px; border-left:4px solid #2b5fe3; }
+  h2 .tag { font-size:12px; color:#6b7280; font-weight:400; margin-left:8px; }
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  .card { background:#f7f9fc; border-radius:10px; padding:12px; text-align:center; }
+  .card-name { font-size:12px; color:#6b7280; }
+  .card-price { font-size:20px; font-weight:700; margin:2px 0; }
+  .card-chg { font-size:13px; font-weight:600; }
+  .kv { display:flex; flex-wrap:wrap; gap:10px 24px; margin:6px 0 12px; }
+  .kv .item { font-size:13px; }
+  .kv .item b { font-size:18px; display:block; }
+  .legend-row { display:flex; flex-wrap:wrap; gap:14px; font-size:12px; color:#6b7280; margin-top:6px; }
+  .legend-row .lg { display:flex; align-items:center; gap:5px; }
+  .legend-row i { width:11px; height:11px; border-radius:2px; display:inline-block; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-top:8px; }
+  th,td { padding:7px 8px; text-align:right; border-bottom:1px solid #f0f2f5; }
+  th:first-child,td:first-child { text-align:left; }
+  th { color:#6b7280; font-weight:600; }
+  .up { color:#e0322f; } .down { color:#16a34a; }
+  .note { font-size:12px; color:#6b7280; margin-top:10px; }
+  footer { text-align:center; color:#6b7280; font-size:12px; margin-top:18px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:620px){ .cards{grid-template-columns:repeat(2,1fr);} .grid2{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<div class="header">
-<h1>📊 A股市场情绪日报</h1>
-<div class="meta">报告日期：2026-07-21 · 采集时间：2026-07-21 18:49:49 · 数据源：东方财富 / 新浪财经</div>
-<nav class="nav">
-<a href="#m1"><span class="nav-num">01</span>市场情绪</a>
-<a href="#m2"><span class="nav-num">02</span>当日及近5日板块</a>
-<a href="#m3"><span class="nav-num">03</span>个股资金</a>
-</nav>
-</div>
-<div class="container">
-<section id="m1" class="module">
-<h2 class="module-title"><span class="num">01</span> 市场情绪</h2>
-<div class="idx-cards"><div class="idx-card">
-<div class="idx-name">上证指数</div>
-<div class="idx-close">3864.37</div>
-<div class="idx-pct up">+1.79%</div>
-<div class="idx-amt">成交额 13965.18亿</div>
-</div><div class="idx-card">
-<div class="idx-name">深证成指</div>
-<div class="idx-close">14264.29</div>
-<div class="idx-pct up">+4.81%</div>
-<div class="idx-amt">成交额 15605.75亿</div>
-</div><div class="idx-card">
-<div class="idx-name">创业板指</div>
-<div class="idx-close">3685.97</div>
-<div class="idx-pct up">+7.05%</div>
-<div class="idx-amt">成交额 7450.92亿</div>
-</div></div>
-<h3 class="sub-title">① 近5日三大指数情况（侧重量能）</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">日期</th><th class="">上证收盘</th><th class="">上证涨幅</th><th class="">上证成交量</th><th class="">深证收盘</th><th class="">深证涨幅</th><th class="">深证成交量</th><th class="">创业板收盘</th><th class="">创业板涨幅</th><th class="">创业板成交量</th></tr></thead>
-<tbody><tr><td class="sticky-col">07-15</td><td class="">3955.578</td><td class=""><span class="down">-0.21%</span></td><td class="">576.21亿</td><td class="">14779.396</td><td class=""><span class="down">-1.28%</span></td><td class="">688.92亿</td><td class="">3804.704</td><td class=""><span class="down">-1.93%</span></td><td class="">197.25亿</td></tr><tr><td class="sticky-col">07-16</td><td class="">3882.413</td><td class=""><span class="down">-0.77%</span></td><td class="">535.28亿</td><td class="">14488.654</td><td class=""><span class="down">-0.06%</span></td><td class="">665.87亿</td><td class="">3692.457</td><td class=""><span class="down">-0.49%</span></td><td class="">198.46亿</td></tr><tr><td class="sticky-col">07-17</td><td class="">3764.155</td><td class=""><span class="down">-2.62%</span></td><td class="">650.45亿</td><td class="">13706.884</td><td class=""><span class="down">-4.47%</span></td><td class="">763.77亿</td><td class="">3428.63</td><td class=""><span class="down">-5.86%</span></td><td class="">230.22亿</td></tr><tr><td class="sticky-col">07-20</td><td class="">3796.281</td><td class=""><span class="up">+0.12%</span></td><td class="">709.23亿</td><td class="">13610.231</td><td class=""><span class="down">-1.87%</span></td><td class="">772.88亿</td><td class="">3443.102</td><td class=""><span class="down">-1.74%</span></td><td class="">237.17亿</td></tr><tr><td class="sticky-col">07-21</td><td class="">3864.367</td><td class=""><span class="up">+1.37%</span></td><td class="">735.02亿</td><td class="">14264.291</td><td class=""><span class="up">+4.45%</span></td><td class="">835.91亿</td><td class="">3685.969</td><td class=""><span class="up">+6.25%</span></td><td class="">258.92亿</td></tr></tbody>
-</table>
-</div>
-<div class="chart-container">
-<svg viewBox="0 0 800 300" style="width:100%;height:auto;background:rgba(20,20,30,0.6);border-radius:8px;">
-<rect x="60" y="8" width="12" height="3" fill="#ff4d4f"/><text x="78" y="13" fill="#e6edf3" font-size="11">上证指数</text><rect x="180" y="8" width="12" height="3" fill="#52c41a"/><text x="198" y="13" fill="#e6edf3" font-size="11">深证成指</text><rect x="300" y="8" width="12" height="3" fill="#1890ff"/><text x="318" y="13" fill="#e6edf3" font-size="11">创业板指</text>
-<text x="400.0" y="20" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600">近5日三大指数成交量(亿)</text>
-<text x="15" y="150.0" transform="rotate(-90 15 150.0)" text-anchor="middle" fill="#8b949e" font-size="11">成交量(亿)</text>
-<line x1="60" y1="30.0" x2="780" y2="30.0" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="34.0" text-anchor="end" fill="#8b949e" font-size="10">899.76</text><line x1="60" y1="87.5" x2="780" y2="87.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="91.5" text-anchor="end" fill="#8b949e" font-size="10">708.18</text><line x1="60" y1="145.0" x2="780" y2="145.0" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="149.0" text-anchor="end" fill="#8b949e" font-size="10">516.60</text><line x1="60" y1="202.5" x2="780" y2="202.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="206.5" text-anchor="end" fill="#8b949e" font-size="10">325.02</text><line x1="60" y1="260.0" x2="780" y2="260.0" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="264.0" text-anchor="end" fill="#8b949e" font-size="10">133.44</text>
-<text x="60.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-15</text><text x="240.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-16</text><text x="420.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-17</text><text x="600.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-20</text><text x="780.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-21</text>
-<path d="M 60.0,127.11191147301388 L 240.0,139.38746215680135 L 420.0,104.81182795698926 L 600.0,87.19386157218915 L 780.0,79.45036016285624" fill="none" stroke="#ff4d4f" stroke-width="2"/><circle cx="60.0" cy="127.11191147301388" r="3" fill="#ff4d4f"/><circle cx="240.0" cy="139.38746215680135" r="3" fill="#ff4d4f"/><circle cx="420.0" cy="104.81182795698926" r="3" fill="#ff4d4f"/><circle cx="600.0" cy="87.19386157218915" r="3" fill="#ff4d4f"/><circle cx="780.0" cy="79.45036016285624" r="3" fill="#ff4d4f"/><path d="M 60.0,93.2866165570519 L 240.0,100.18973796847271 L 420.0,70.80645161290323 L 600.0,68.07521661968892 L 780.0,49.16666666666667" fill="none" stroke="#52c41a" stroke-width="2"/><circle cx="60.0" cy="93.2866165570519" r="3" fill="#52c41a"/><circle cx="240.0" cy="100.18973796847271" r="3" fill="#52c41a"/><circle cx="420.0" cy="70.80645161290323" r="3" fill="#52c41a"/><circle cx="600.0" cy="68.07521661968892" r="3" fill="#52c41a"/><circle cx="780.0" cy="49.16666666666667" r="3" fill="#52c41a"/><path d="M 60.0,240.83333333333334 L 240.0,240.47317047708532 L 420.0,230.95886835786618 L 600.0,228.85791836308593 L 780.0,222.34497337926715" fill="none" stroke="#1890ff" stroke-width="2"/><circle cx="60.0" cy="240.83333333333334" r="3" fill="#1890ff"/><circle cx="240.0" cy="240.47317047708532" r="3" fill="#1890ff"/><circle cx="420.0" cy="230.95886835786618" r="3" fill="#1890ff"/><circle cx="600.0" cy="228.85791836308593" r="3" fill="#1890ff"/><circle cx="780.0" cy="222.34497337926715" r="3" fill="#1890ff"/>
-</svg>
-</div>
-<h3 class="sub-title">② 近5日涨停/跌停家数</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">日期</th><th class="">涨停家数</th><th class="">跌停家数</th><th class="">涨跌比</th></tr></thead>
-<tbody><tr><td class="sticky-col">07-15</td><td class=""><span class="up"><b>72</b></span></td><td class=""><span class="down"><b>31</b></span></td><td class="">2.32</td></tr><tr><td class="sticky-col">07-16</td><td class=""><span class="up"><b>42</b></span></td><td class=""><span class="down"><b>33</b></span></td><td class="">1.27</td></tr><tr><td class="sticky-col">07-17</td><td class=""><span class="up"><b>33</b></span></td><td class=""><span class="down"><b>192</b></span></td><td class="">0.17</td></tr><tr><td class="sticky-col">07-20</td><td class=""><span class="up"><b>53</b></span></td><td class=""><span class="down"><b>211</b></span></td><td class="">0.25</td></tr><tr><td class="sticky-col">07-21</td><td class=""><span class="up"><b>121</b></span></td><td class=""><span class="down"><b>21</b></span></td><td class="">5.76</td></tr></tbody>
-</table>
-</div>
-<div class="chart-container">
-<svg viewBox="0 0 800 300" style="width:100%;height:auto;background:rgba(20,20,30,0.6);border-radius:8px;">
-<rect x="60" y="8" width="12" height="3" fill="#ff4d4f"/><text x="78" y="13" fill="#e6edf3" font-size="11">涨停家数</text><rect x="180" y="8" width="12" height="3" fill="#52c41a"/><text x="198" y="13" fill="#e6edf3" font-size="11">跌停家数</text>
-<text x="400.0" y="20" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600">近5日涨停/跌停家数趋势</text>
-<text x="15" y="150.0" transform="rotate(-90 15 150.0)" text-anchor="middle" fill="#8b949e" font-size="11">家数</text>
-<line x1="60" y1="30.0" x2="780" y2="30.0" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="34.0" text-anchor="end" fill="#8b949e" font-size="10">129.80</text><line x1="60" y1="87.5" x2="780" y2="87.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="91.5" text-anchor="end" fill="#8b949e" font-size="10">103.40</text><line x1="60" y1="145.0" x2="780" y2="145.0" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="149.0" text-anchor="end" fill="#8b949e" font-size="10">77.00</text><line x1="60" y1="202.5" x2="780" y2="202.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="206.5" text-anchor="end" fill="#8b949e" font-size="10">50.60</text><line x1="60" y1="260.0" x2="780" y2="260.0" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="52" y="264.0" text-anchor="end" fill="#8b949e" font-size="10">24.20</text>
-<text x="60.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-15</text><text x="240.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-16</text><text x="420.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-17</text><text x="600.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-20</text><text x="780.0" y="278" text-anchor="middle" fill="#8b949e" font-size="10">07-21</text>
-<path d="M 60.0,155.8901515151515 L 240.0,221.2310606060606 L 420.0,240.83333333333331 L 600.0,197.27272727272728 L 780.0,49.1666666666667" fill="none" stroke="#ff4d4f" stroke-width="2"/><circle cx="60.0" cy="155.8901515151515" r="3" fill="#ff4d4f"/><circle cx="240.0" cy="221.2310606060606" r="3" fill="#ff4d4f"/><circle cx="420.0" cy="240.83333333333331" r="3" fill="#ff4d4f"/><circle cx="600.0" cy="197.27272727272728" r="3" fill="#ff4d4f"/><circle cx="780.0" cy="49.1666666666667" r="3" fill="#ff4d4f"/><path d="M 60.0,155.8901515151515 L 240.0,221.2310606060606 L 420.0,240.83333333333331 L 600.0,197.27272727272728 L 780.0,49.1666666666667" fill="none" stroke="#52c41a" stroke-width="2"/><circle cx="60.0" cy="155.8901515151515" r="3" fill="#52c41a"/><circle cx="240.0" cy="221.2310606060606" r="3" fill="#52c41a"/><circle cx="420.0" cy="240.83333333333331" r="3" fill="#52c41a"/><circle cx="600.0" cy="197.27272727272728" r="3" fill="#52c41a"/><circle cx="780.0" cy="49.1666666666667" r="3" fill="#52c41a"/>
-</svg>
-</div>
-<h3 class="sub-title">③ 近5日最高连板 / 最高几天几板及对应概念</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">日期</th><th class="">最高连板</th><th class="">对应个股</th><th class="">对应概念</th><th class="">最高几天几板</th><th class="">对应个股</th><th class="">对应概念</th></tr></thead>
-<tbody><tr><td class="sticky-col">07-15</td><td class=""><span class="lb-badge">4板</span></td><td class="">恒尚节能</td><td class="">装修装饰</td><td class=""><span class="jtjb-badge">12/11</span></td><td class="">恒尚节能</td><td class="">装修装饰</td></tr><tr><td class="sticky-col">07-16</td><td class=""><span class="lb-badge">5板</span></td><td class="">艾艾精工</td><td class="">塑料</td><td class=""><span class="jtjb-badge">6/5</span></td><td class="">艾艾精工</td><td class="">塑料</td></tr><tr><td class="sticky-col">07-17</td><td class=""><span class="lb-badge">5板</span></td><td class="">艾艾精工</td><td class="">塑料</td><td class=""><span class="jtjb-badge">7/6</span></td><td class="">艾艾精工</td><td class="">塑料</td></tr><tr><td class="sticky-col">07-20</td><td class=""><span class="lb-badge">3板</span></td><td class="">大有能源</td><td class="">煤炭开采</td><td class=""><span class="jtjb-badge">5/3</span></td><td class="">大有能源</td><td class="">煤炭开采</td></tr><tr><td class="sticky-col">07-21</td><td class=""><span class="lb-badge">4板</span></td><td class="">哈药股份</td><td class="">化学制药</td><td class=""><span class="jtjb-badge">8/6</span></td><td class="">哈药股份</td><td class="">化学制药</td></tr></tbody>
-</table>
-</div>
-<h3 class="sub-title">④ 近5日每日涨停TOP5概念板块</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">日期</th><th class="">TOP1</th><th class="">TOP2</th><th class="">TOP3</th><th class="">TOP4</th><th class="">TOP5</th></tr></thead>
-<tbody><tr><td class="sticky-col">07-15</td><td class="">化学制药<br><span class="muted">9家</span></td><td class="">医疗服务<br><span class="muted">6家</span></td><td class="">电力<br><span class="muted">4家</span></td><td class="">医疗器械<br><span class="muted">3家</span></td><td class="">电网设备<br><span class="muted">3家</span></td></tr><tr><td class="sticky-col">07-16</td><td class="">消费电子<br><span class="muted">5家</span></td><td class="">塑料<br><span class="muted">3家</span></td><td class="">化学制药<br><span class="muted">3家</span></td><td class="">影视院线<br><span class="muted">3家</span></td><td class="">医疗服务<br><span class="muted">3家</span></td></tr><tr><td class="sticky-col">07-17</td><td class="">电力<br><span class="muted">9家</span></td><td class="">塑料<br><span class="muted">2家</span></td><td class="">汽车零部<br><span class="muted">2家</span></td><td class="">厨卫电器<br><span class="muted">1家</span></td><td class="">服装家纺<br><span class="muted">1家</span></td></tr><tr><td class="sticky-col">07-20</td><td class="">电力<br><span class="muted">17家</span></td><td class="">煤炭开采<br><span class="muted">6家</span></td><td class="">IT服务Ⅱ<br><span class="muted">3家</span></td><td class="">化学原料<br><span class="muted">3家</span></td><td class="">专用设备<br><span class="muted">2家</span></td></tr><tr><td class="sticky-col">07-21</td><td class="">半导体<br><span class="muted">28家</span></td><td class="">元件<br><span class="muted">8家</span></td><td class="">光学光电<br><span class="muted">7家</span></td><td class="">汽车零部<br><span class="muted">7家</span></td><td class="">专用设备<br><span class="muted">4家</span></td></tr></tbody>
-</table>
-</div>
-<h4 class="table-title">今日涨停TOP5概念板块详情</h4>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">概念板块</th><th class="">涨停数</th><th class="">跌停数</th><th class="">涨幅</th><th class="">主力净流入</th><th class="">上涨家数</th><th class="">下跌家数</th></tr></thead>
-<tbody><tr><td class="sticky-col">半导体</td><td class=""><span class="up"><b>28</b></span></td><td class=""><span class="down"><b>0</b></span></td><td class=""><span class="up">+9.85%</span></td><td class=""><span class="up">166.18亿</span></td><td class=""><span class="up">180</span></td><td class=""><span class="down">1</span></td></tr><tr><td class="sticky-col">元件</td><td class=""><span class="up"><b>8</b></span></td><td class=""><span class="down"><b>1</b></span></td><td class=""><span class="up">+7.15%</span></td><td class=""><span class="up">33.86亿</span></td><td class=""><span class="up">64</span></td><td class=""><span class="down">2</span></td></tr><tr><td class="sticky-col">光学光电</td><td class=""><span class="up"><b>7</b></span></td><td class=""><span class="down"><b>0</b></span></td><td class=""><span class="up">+5.20%</span></td><td class=""><span class="up">27.34亿</span></td><td class=""><span class="up">91</span></td><td class=""><span class="down">7</span></td></tr><tr><td class="sticky-col">汽车零部</td><td class=""><span class="up"><b>7</b></span></td><td class=""><span class="down"><b>0</b></span></td><td class="">-</td><td class="">-</td><td class=""><span class="up">-</span></td><td class=""><span class="down">-</span></td></tr><tr><td class="sticky-col">专用设备</td><td class=""><span class="up"><b>4</b></span></td><td class=""><span class="down"><b>0</b></span></td><td class=""><span class="up">+1.73%</span></td><td class=""><span class="up">2.30亿</span></td><td class=""><span class="up">126</span></td><td class=""><span class="down">73</span></td></tr></tbody>
-</table>
-</div>
-</section>
-<section id="m2" class="module">
-<h2 class="module-title"><span class="num">02</span> 当日及近5日板块</h2>
-<h3 class="sub-title">① 今日概念板块净流入 TOP5</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">概念板块</th><th class="">涨跌幅</th><th class="">主力净流入</th><th class="">净占比</th><th class="">超大单</th><th class="">大单</th><th class="">中单</th><th class="">小单</th><th class="">上涨家数</th><th class="">下跌家数</th></tr></thead>
-<tbody><tr><td class="sticky-col">融资融券</td><td class=""><span class="up">+2.17%</span></td><td class=""><span class="up">337.08亿</span></td><td class="">1.24%</td><td class=""><span class="up">351.77亿</span></td><td class=""><span class="down">-14.69亿</span></td><td class=""><span class="down">-312.02亿</span></td><td class=""><span class="down">-21.12亿</span></td><td class=""><span class="up">2427</span></td><td class=""><span class="down">1330</span></td></tr><tr><td class="sticky-col">科技风格</td><td class=""><span class="up">+9.64%</span></td><td class=""><span class="up">295.87亿</span></td><td class="">3.45%</td><td class=""><span class="up">260.96亿</span></td><td class=""><span class="up">34.91亿</span></td><td class=""><span class="down">-212.47亿</span></td><td class=""><span class="down">-83.40亿</span></td><td class=""><span class="up">94</span></td><td class=""><span class="down">6</span></td></tr><tr><td class="sticky-col">MSCI中国</td><td class=""><span class="up">+2.88%</span></td><td class=""><span class="up">283.67亿</span></td><td class="">1.83%</td><td class=""><span class="up">262.48亿</span></td><td class=""><span class="up">21.19亿</span></td><td class=""><span class="down">-229.13亿</span></td><td class=""><span class="down">-54.54亿</span></td><td class=""><span class="up">386</span></td><td class=""><span class="down">176</span></td></tr><tr><td class="sticky-col">百元股</td><td class=""><span class="up">+9.19%</span></td><td class=""><span class="up">254.83亿</span></td><td class="">3.05%</td><td class=""><span class="up">249.60亿</span></td><td class=""><span class="up">5.23亿</span></td><td class=""><span class="down">-201.52亿</span></td><td class=""><span class="down">-52.19亿</span></td><td class=""><span class="up">181</span></td><td class=""><span class="down">12</span></td></tr><tr><td class="sticky-col">大盘股</td><td class=""><span class="up">+2.80%</span></td><td class=""><span class="up">252.17亿</span></td><td class="">2.10%</td><td class=""><span class="up">229.89亿</span></td><td class=""><span class="up">22.29亿</span></td><td class=""><span class="down">-205.11亿</span></td><td class=""><span class="down">-47.06亿</span></td><td class=""><span class="up">173</span></td><td class=""><span class="down">119</span></td></tr></tbody>
-</table>
-</div>
-<h3 class="sub-title">② 今日概念板块净流出 TOP5</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">概念板块</th><th class="">涨跌幅</th><th class="">主力净流入</th><th class="">净占比</th><th class="">超大单</th><th class="">大单</th><th class="">中单</th><th class="">小单</th><th class="">上涨家数</th><th class="">下跌家数</th></tr></thead>
-<tbody><tr><td class="sticky-col">智能家居</td><td class=""><span class="up">+1.74%</span></td><td class=""><span class="up">25.67亿</span></td><td class="">2.37%</td><td class=""><span class="up">20.63亿</span></td><td class=""><span class="up">5.04亿</span></td><td class=""><span class="down">-16.38亿</span></td><td class=""><span class="down">-9.27亿</span></td><td class=""><span class="up">102</span></td><td class=""><span class="down">61</span></td></tr><tr><td class="sticky-col">锂矿概念</td><td class=""><span class="up">+3.05%</span></td><td class=""><span class="up">25.69亿</span></td><td class="">3.82%</td><td class=""><span class="up">17.74亿</span></td><td class=""><span class="up">7.95亿</span></td><td class=""><span class="down">-12.54亿</span></td><td class=""><span class="down">-13.15亿</span></td><td class=""><span class="up">32</span></td><td class=""><span class="down">4</span></td></tr><tr><td class="sticky-col">QFII重仓</td><td class=""><span class="up">+0.70%</span></td><td class=""><span class="up">25.85亿</span></td><td class="">1.01%</td><td class=""><span class="up">26.82亿</span></td><td class=""><span class="down">-9656.58万</span></td><td class=""><span class="down">-35.74亿</span></td><td class=""><span class="up">9.89亿</span></td><td class=""><span class="up">325</span></td><td class=""><span class="down">356</span></td></tr><tr><td class="sticky-col">柔性屏(折叠屏)</td><td class=""><span class="up">+6.08%</span></td><td class=""><span class="up">27.13亿</span></td><td class="">2.66%</td><td class=""><span class="up">18.06亿</span></td><td class=""><span class="up">9.07亿</span></td><td class=""><span class="down">-18.10亿</span></td><td class=""><span class="down">-9.03亿</span></td><td class=""><span class="up">70</span></td><td class=""><span class="down">5</span></td></tr><tr><td class="sticky-col">光伏概念</td><td class=""><span class="up">+1.98%</span></td><td class=""><span class="up">27.23亿</span></td><td class="">1.05%</td><td class=""><span class="up">37.83亿</span></td><td class=""><span class="down">-10.60亿</span></td><td class=""><span class="down">-43.10亿</span></td><td class=""><span class="up">16.28亿</span></td><td class=""><span class="up">282</span></td><td class=""><span class="down">148</span></td></tr></tbody>
-</table>
-</div>
-<h3 class="sub-title">③ 近5日概念板块每日净流入 TOP5</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">日期</th><th class="">TOP1</th><th class="">TOP2</th><th class="">TOP3</th><th class="">TOP4</th><th class="">TOP5</th></tr></thead>
-<tbody><tr><td class="sticky-col">07-15</td><td class="">融资融券<br><span class="muted">337.08亿</span></td><td class="">科技风格<br><span class="muted">295.87亿</span></td><td class="">MSCI中国<br><span class="muted">283.67亿</span></td><td class="">百元股<br><span class="muted">254.83亿</span></td><td class="">大盘股<br><span class="muted">252.17亿</span></td></tr><tr><td class="sticky-col">07-16</td><td class="">融资融券<br><span class="muted">337.08亿</span></td><td class="">科技风格<br><span class="muted">295.87亿</span></td><td class="">MSCI中国<br><span class="muted">283.67亿</span></td><td class="">百元股<br><span class="muted">254.83亿</span></td><td class="">大盘股<br><span class="muted">252.17亿</span></td></tr><tr><td class="sticky-col">07-17</td><td class="">融资融券<br><span class="muted">337.08亿</span></td><td class="">科技风格<br><span class="muted">295.87亿</span></td><td class="">MSCI中国<br><span class="muted">283.67亿</span></td><td class="">百元股<br><span class="muted">254.83亿</span></td><td class="">大盘股<br><span class="muted">252.17亿</span></td></tr><tr><td class="sticky-col">07-20</td><td class="">融资融券<br><span class="muted">337.08亿</span></td><td class="">科技风格<br><span class="muted">295.87亿</span></td><td class="">MSCI中国<br><span class="muted">283.67亿</span></td><td class="">百元股<br><span class="muted">254.83亿</span></td><td class="">大盘股<br><span class="muted">252.17亿</span></td></tr><tr><td class="sticky-col">07-21</td><td class="">融资融券<br><span class="muted">337.08亿</span></td><td class="">科技风格<br><span class="muted">295.87亿</span></td><td class="">MSCI中国<br><span class="muted">283.67亿</span></td><td class="">百元股<br><span class="muted">254.83亿</span></td><td class="">大盘股<br><span class="muted">252.17亿</span></td></tr></tbody>
-</table>
-</div>
-<h3 class="sub-title">④ 近5日概念板块每日净流出 TOP5</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">日期</th><th class="">TOP1</th><th class="">TOP2</th><th class="">TOP3</th><th class="">TOP4</th><th class="">TOP5</th></tr></thead>
-<tbody><tr><td class="sticky-col">07-15</td><td class="">智能家居<br><span class="muted">25.67亿</span></td><td class="">锂矿概念<br><span class="muted">25.69亿</span></td><td class="">QFII重仓<br><span class="muted">25.85亿</span></td><td class="">柔性屏(折叠屏)<br><span class="muted">27.13亿</span></td><td class="">光伏概念<br><span class="muted">27.23亿</span></td></tr><tr><td class="sticky-col">07-16</td><td class="">智能家居<br><span class="muted">25.67亿</span></td><td class="">锂矿概念<br><span class="muted">25.69亿</span></td><td class="">QFII重仓<br><span class="muted">25.85亿</span></td><td class="">柔性屏(折叠屏)<br><span class="muted">27.13亿</span></td><td class="">光伏概念<br><span class="muted">27.23亿</span></td></tr><tr><td class="sticky-col">07-17</td><td class="">智能家居<br><span class="muted">25.67亿</span></td><td class="">锂矿概念<br><span class="muted">25.69亿</span></td><td class="">QFII重仓<br><span class="muted">25.85亿</span></td><td class="">柔性屏(折叠屏)<br><span class="muted">27.13亿</span></td><td class="">光伏概念<br><span class="muted">27.23亿</span></td></tr><tr><td class="sticky-col">07-20</td><td class="">智能家居<br><span class="muted">25.67亿</span></td><td class="">锂矿概念<br><span class="muted">25.69亿</span></td><td class="">QFII重仓<br><span class="muted">25.85亿</span></td><td class="">柔性屏(折叠屏)<br><span class="muted">27.13亿</span></td><td class="">光伏概念<br><span class="muted">27.23亿</span></td></tr><tr><td class="sticky-col">07-21</td><td class="">智能家居<br><span class="muted">25.67亿</span></td><td class="">锂矿概念<br><span class="muted">25.69亿</span></td><td class="">QFII重仓<br><span class="muted">25.85亿</span></td><td class="">柔性屏(折叠屏)<br><span class="muted">27.13亿</span></td><td class="">光伏概念<br><span class="muted">27.23亿</span></td></tr></tbody>
-</table>
-</div>
-<div class="signals"><div class="signal-title">🔑 关键信号</div><ul><li class="signal-item">概念板块主力净流入合计 <b>8663.64亿</b>（流入 8663.64亿 / 流出 0）</li><li class="signal-item">今日概念资金流入TOP1：<b>融资融券</b> 337.08亿</li><li class="signal-item">今日概念资金流出TOP1：<b>智能家居</b> 25.67亿</li></ul></div>
-</section>
-<section id="m4" class="module">
-<h2 class="module-title"><span class="num">03</span> 个股资金</h2>
-<h3 class="sub-title">⑧ 近5日个股资金流向排名</h3>
-<h4 class="table-title">今日主力净流入 TOP5</h4>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">名称</th><th class="">代码</th><th class="">今日涨跌幅</th><th class="">今日主力净流入</th><th class="">净占比</th></tr></thead>
-<tbody><tr><td class="sticky-col">中际旭创</td><td class="">300308</td><td class=""><span class="up">+13.20%</span></td><td class=""><span class="up">30.38亿</span></td><td class="">5.92%</td></tr><tr><td class="sticky-col">兆易创新</td><td class="">603986</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">22.37亿</span></td><td class="">6.76%</td></tr><tr><td class="sticky-col">京东方Ａ</td><td class="">000725</td><td class=""><span class="up">+8.98%</span></td><td class=""><span class="up">17.66亿</span></td><td class="">9.17%</td></tr><tr><td class="sticky-col">新易盛</td><td class="">300502</td><td class=""><span class="up">+8.19%</span></td><td class=""><span class="up">14.99亿</span></td><td class="">3.76%</td></tr><tr><td class="sticky-col">生益科技</td><td class="">600183</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">14.47亿</span></td><td class="">12.58%</td></tr></tbody>
-</table>
-</div>
-<h4 class="table-title">5日主力净流入 TOP5（汇总）</h4>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">名称</th><th class="">代码</th><th class="">5日涨跌幅</th><th class="">5日主力净流入</th><th class="">净占比</th></tr></thead>
-<tbody><tr><td class="sticky-col">宁德时代</td><td class="">300750</td><td class=""><span class="up">+5.00%</span></td><td class=""><span class="up">33.48亿</span></td><td class="">4.45%</td></tr><tr><td class="sticky-col">紫光股份</td><td class="">000938</td><td class=""><span class="up">+12.11%</span></td><td class=""><span class="up">20.11亿</span></td><td class="">2.45%</td></tr><tr><td class="sticky-col">紫金矿业</td><td class="">601899</td><td class=""><span class="up">+3.96%</span></td><td class=""><span class="up">12.42亿</span></td><td class="">2.96%</td></tr><tr><td class="sticky-col">华虹宏力</td><td class="">688347</td><td class=""><span class="up">+12.82%</span></td><td class=""><span class="up">12.27亿</span></td><td class="">2.41%</td></tr><tr><td class="sticky-col">华正新材</td><td class="">603186</td><td class=""><span class="down">-16.39%</span></td><td class=""><span class="up">8.34亿</span></td><td class="">5.11%</td></tr></tbody>
-</table>
-</div>
+<div class="wrap">
+  <header>
+    <h1>A股金融市场情绪日报</h1>
+    <div class="sub">2026年07月21日 · 数据来源:腾讯财经 / 东方财富(公开行情接口)</div>
+    <div class="badge">市场情绪:偏多 · 情绪指数 56.4</div>
+  </header>
 
-<h3 class="sub-title">⑨ 近10日涨幅前10</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">排名</th><th class="">名称</th><th class="">代码</th><th class="">最新价</th><th class="">今日涨跌幅</th><th class="">10日涨幅</th></tr></thead>
-<tbody><tr><td class="sticky-col">1</td><td class="">哈药股份</td><td class="">600664</td><td class="">5.84</td><td class=""><span class="up">+9.98%</span></td><td class=""><span class="up">+90.23%</span></td></tr><tr><td class="sticky-col">2</td><td class="">陇神戎发</td><td class="">300534</td><td class="">13.8</td><td class=""><span class="up">+14.62%</span></td><td class=""><span class="up">+88.27%</span></td></tr><tr><td class="sticky-col">3</td><td class="">米奥会展</td><td class="">300795</td><td class="">13.31</td><td class=""><span class="up">+20.02%</span></td><td class=""><span class="up">+60.36%</span></td></tr><tr><td class="sticky-col">4</td><td class="">立新能源</td><td class="">001258</td><td class="">10.01</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">+48.96%</span></td></tr><tr><td class="sticky-col">5</td><td class="">通源石油</td><td class="">300164</td><td class="">11.13</td><td class=""><span class="down">-8.77%</span></td><td class=""><span class="up">+47.03%</span></td></tr><tr><td class="sticky-col">6</td><td class="">中岩大地</td><td class="">003001</td><td class="">18.72</td><td class=""><span class="up">+6.36%</span></td><td class=""><span class="up">+45.45%</span></td></tr><tr><td class="sticky-col">7</td><td class="">格林精密</td><td class="">300968</td><td class="">12.49</td><td class=""><span class="up">+14.17%</span></td><td class=""><span class="up">+41.45%</span></td></tr><tr><td class="sticky-col">8</td><td class="">信通电子</td><td class="">001388</td><td class="">24.05</td><td class=""><span class="down">-9.99%</span></td><td class=""><span class="up">+39.50%</span></td></tr><tr><td class="sticky-col">9</td><td class="">智度股份</td><td class="">000676</td><td class="">6.92</td><td class=""><span class="up">+9.15%</span></td><td class=""><span class="up">+35.69%</span></td></tr><tr><td class="sticky-col">10</td><td class="">ST龙大</td><td class="">002726</td><td class="">1.98</td><td class=""><span class="up">+5.88%</span></td><td class=""><span class="up">+35.62%</span></td></tr></tbody>
-</table>
-</div>
-<h3 class="sub-title">⑩ 近20日涨幅前10</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">排名</th><th class="">名称</th><th class="">代码</th><th class="">最新价</th><th class="">今日涨跌幅</th><th class="">20日涨幅</th></tr></thead>
-<tbody><tr><td class="sticky-col">1</td><td class="">哈药股份</td><td class="">600664</td><td class="">5.84</td><td class=""><span class="up">+9.98%</span></td><td class=""><span class="up">+83.07%</span></td></tr><tr><td class="sticky-col">2</td><td class="">陇神戎发</td><td class="">300534</td><td class="">13.8</td><td class=""><span class="up">+14.62%</span></td><td class=""><span class="up">+81.82%</span></td></tr><tr><td class="sticky-col">3</td><td class="">康龙化成</td><td class="">300759</td><td class="">39.36</td><td class=""><span class="up">+5.58%</span></td><td class=""><span class="up">+67.13%</span></td></tr><tr><td class="sticky-col">4</td><td class="">迪哲医药-U</td><td class="">688192</td><td class="">61.78</td><td class=""><span class="down">-1.75%</span></td><td class=""><span class="up">+60.76%</span></td></tr><tr><td class="sticky-col">5</td><td class="">紫光股份</td><td class="">000938</td><td class="">41.46</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">+54.07%</span></td></tr><tr><td class="sticky-col">6</td><td class="">米奥会展</td><td class="">300795</td><td class="">13.31</td><td class=""><span class="up">+20.02%</span></td><td class=""><span class="up">+45.31%</span></td></tr><tr><td class="sticky-col">7</td><td class="">奥浦迈</td><td class="">688293</td><td class="">56.22</td><td class=""><span class="up">+4.11%</span></td><td class=""><span class="up">+40.41%</span></td></tr><tr><td class="sticky-col">8</td><td class="">立新能源</td><td class="">001258</td><td class="">10.01</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">+36.38%</span></td></tr><tr><td class="sticky-col">9</td><td class="">中远海特</td><td class="">600428</td><td class="">10.9</td><td class=""><span class="down">-2.42%</span></td><td class=""><span class="up">+30.38%</span></td></tr><tr><td class="sticky-col">10</td><td class="">ST龙大</td><td class="">002726</td><td class="">1.98</td><td class=""><span class="up">+5.88%</span></td><td class=""><span class="up">+30.26%</span></td></tr></tbody>
-</table>
-</div>
-<h3 class="sub-title">附：近5日涨幅前10</h3>
-<div class="table-wrap fixed-col ">
-<table class="data-table">
-<thead><tr><th class="sticky-col">排名</th><th class="">名称</th><th class="">代码</th><th class="">最新价</th><th class="">今日涨跌幅</th><th class="">5日涨幅</th></tr></thead>
-<tbody><tr><td class="sticky-col">1</td><td class="">米奥会展</td><td class="">300795</td><td class="">13.31</td><td class=""><span class="up">+20.02%</span></td><td class=""><span class="up">+62.52%</span></td></tr><tr><td class="sticky-col">2</td><td class="">立新能源</td><td class="">001258</td><td class="">10.01</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">+52.82%</span></td></tr><tr><td class="sticky-col">3</td><td class="">汇金股份</td><td class="">300368</td><td class="">9.73</td><td class=""><span class="up">+3.40%</span></td><td class=""><span class="up">+32.92%</span></td></tr><tr><td class="sticky-col">4</td><td class="">中嘉博创</td><td class="">000889</td><td class="">3.8</td><td class=""><span class="up">+10.14%</span></td><td class=""><span class="up">+27.09%</span></td></tr><tr><td class="sticky-col">5</td><td class="">瑞晨环保</td><td class="">301273</td><td class="">35.52</td><td class=""><span class="up">+20.00%</span></td><td class=""><span class="up">+18.01%</span></td></tr><tr><td class="sticky-col">6</td><td class="">科华控股</td><td class="">603161</td><td class="">14.52</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">+16.72%</span></td></tr><tr><td class="sticky-col">7</td><td class="">证通电子</td><td class="">002197</td><td class="">6.34</td><td class=""><span class="up">+10.07%</span></td><td class=""><span class="up">+15.69%</span></td></tr><tr><td class="sticky-col">8</td><td class="">中岩大地</td><td class="">003001</td><td class="">18.72</td><td class=""><span class="up">+6.36%</span></td><td class=""><span class="up">+15.56%</span></td></tr><tr><td class="sticky-col">9</td><td class="">汇得科技</td><td class="">603192</td><td class="">21.01</td><td class=""><span class="up">+10.00%</span></td><td class=""><span class="up">+12.90%</span></td></tr><tr><td class="sticky-col">10</td><td class="">传艺科技</td><td class="">002866</td><td class="">15.64</td><td class=""><span class="up">+5.32%</span></td><td class=""><span class="up">+11.95%</span></td></tr></tbody>
-</table>
-</div>
-</section>
-</div>
-<div class="footer">
-<p>本报告由 WorkBuddy 自动生成 · 仅供投资参考，不构成投资建议</p>
-<p>数据源：东方财富 push2delay / datacenter-web · 新浪财经 · 生成时间 2026-07-21 18:50:50</p>
+  <!-- 模块一:市场情绪 -->
+  <section>
+    <h2>① 市场情绪 <span class="tag">指数 · 涨跌家数 · 资金面</span></h2>
+    <div class="cards">
+        <div class="card">
+          <div class="card-name">上证指数</div>
+          <div class="card-price">3864.37</div>
+          <div class="card-chg" style="color:#e0322f">▲ +1.79%</div>
+        </div>
+        <div class="card">
+          <div class="card-name">深证成指</div>
+          <div class="card-price">14264.29</div>
+          <div class="card-chg" style="color:#e0322f">▲ +4.81%</div>
+        </div>
+        <div class="card">
+          <div class="card-name">创业板指</div>
+          <div class="card-price">3685.97</div>
+          <div class="card-chg" style="color:#e0322f">▲ +7.05%</div>
+        </div>
+        <div class="card">
+          <div class="card-name">沪深300</div>
+          <div class="card-price">4739.23</div>
+          <div class="card-chg" style="color:#e0322f">▲ +3.06%</div>
+        </div>
+        <div class="card">
+          <div class="card-name">科创50</div>
+          <div class="card-price">1903.16</div>
+          <div class="card-chg" style="color:#e0322f">▲ +10.73%</div>
+        </div></div>
+    <div class="kv" style="margin-top:14px">
+      <div class="item">两市成交额<b>2.96万亿</b></div>
+      <div class="item">上涨/下跌<b><span class="up">2871</span> / <span class="down">2219</span></b></div>
+      <div class="item">涨停/跌停<b><span class="up">336</span> / <span class="down">35</span></b></div>
+      <div class="item">平均涨跌幅<b class="up">+1.38%</b></div>
+    </div>
+    <div style="margin-top:10px">
+    <svg viewBox="0 0 720 38" width="100%" role="img" aria-label="涨跌家数">
+      <rect x="0" y="8" width="51.8231046931408%" height="20" fill="#e0322f"/>
+      <rect x="51.8231046931408%" y="8" width="40.05415162454874%" height="20" fill="#16a34a"/>
+      <rect x="91.87725631768953%" y="8" width="8.12274368231047%" height="20" fill="#9aa0a6"/>
+    </svg>
+    <div class="legend-row">
+      <span class="lg"><i style="background:#e0322f"></i>上涨 2871</span>
+      <span class="lg"><i style="background:#16a34a"></i>下跌 2219</span>
+      <span class="lg"><i style="background:#9aa0a6"></i>平盘 450</span>
+      <span class="lg">涨停 336 / 跌停 35</span>
+    </div></div>
+    <div style="margin-top:10px"><b style="font-size:13px">市场情绪指数</b>
+    <svg viewBox="0 0 720 56" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="情绪指数">
+      <defs>
+        <linearGradient id="sg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#16a34a"/>
+          <stop offset="50%" stop-color="#e0a32f"/>
+          <stop offset="100%" stop-color="#e0322f"/>
+        </linearGradient>
+      </defs>
+      <rect x="16" y="22" width="688" height="12" rx="6" fill="url(#sg)"/>
+      <polygon points="397.032,14 411.032,14 404.032,30" fill="#222831"/>
+      <text x="16" y="50" font-size="11" fill="#6b7280">0 恐慌</text>
+      <text x="360.0" y="50" font-size="11" fill="#6b7280" text-anchor="middle">50</text>
+      <text x="704" y="50" font-size="11" fill="#6b7280" text-anchor="end">100 亢奋</text>
+      <text x="404.032" y="12" font-size="14" font-weight="700" fill="#222831" text-anchor="middle">56.4</text>
+    </svg></div>
+    <div class="note">情绪指数 = 上涨家数 /(上涨+下跌)×100。北向资金自 2024 年 8 月起不再披露,本日报以涨跌家数与涨停家数刻画情绪。</div>
+  </section>
+
+  <!-- 模块二:当日及近5日板块 -->
+  <section>
+    <h2>② 当日及近5日板块 <span class="tag">行业板块 · 指数走势</span></h2>
+    <h3 style="font-size:14px;margin:4px 0 6px">当日行业板块涨幅榜 Top15</h3>
+    <svg viewBox="0 0 720 610" width="100%" role="img" aria-label="bar">
+<line x1="430.0" y1="204" x2="430.0" y2="604" stroke="#e5e7eb"/>
+<rect x="430.0" y="213" width="220.0" height="17" fill="#e0322f" rx="2"/>
+<text x="656.0" y="227.0" font-size="11" fill="#e0322f">+14.75%</text>
+<text x="202" y="227.0" font-size="11" fill="#222831" text-anchor="end">半导体设备</text>
+<rect x="430.0" y="239" width="171.7" height="17" fill="#e0322f" rx="2"/>
+<text x="607.7" y="253.0" font-size="11" fill="#e0322f">+11.51%</text>
+<text x="202" y="253.0" font-size="11" fill="#222831" text-anchor="end">半导体材料</text>
+<rect x="430.0" y="265" width="168.2" height="17" fill="#e0322f" rx="2"/>
+<text x="604.2" y="279.0" font-size="11" fill="#e0322f">+11.28%</text>
+<text x="202" y="279.0" font-size="11" fill="#222831" text-anchor="end">集成电路制造</text>
+<rect x="430.0" y="291" width="149.5" height="17" fill="#e0322f" rx="2"/>
+<text x="585.5" y="305.0" font-size="11" fill="#e0322f">+10.02%</text>
+<text x="202" y="305.0" font-size="11" fill="#222831" text-anchor="end">集成电路封测</text>
+<rect x="430.0" y="317" width="146.9" height="17" fill="#e0322f" rx="2"/>
+<text x="582.9" y="331.0" font-size="11" fill="#e0322f">+9.85%</text>
+<text x="202" y="331.0" font-size="11" fill="#222831" text-anchor="end">半导体</text>
+<rect x="430.0" y="343" width="144.5" height="17" fill="#e0322f" rx="2"/>
+<text x="580.5" y="357.0" font-size="11" fill="#e0322f">+9.69%</text>
+<text x="202" y="357.0" font-size="11" fill="#222831" text-anchor="end">分立器件</text>
+<rect x="430.0" y="369" width="137.1" height="17" fill="#e0322f" rx="2"/>
+<text x="573.1" y="383.0" font-size="11" fill="#e0322f">+9.19%</text>
+<text x="202" y="383.0" font-size="11" fill="#222831" text-anchor="end">电子化学品Ⅲ</text>
+<rect x="430.0" y="395" width="137.1" height="17" fill="#e0322f" rx="2"/>
+<text x="573.1" y="409.0" font-size="11" fill="#e0322f">+9.19%</text>
+<text x="202" y="409.0" font-size="11" fill="#222831" text-anchor="end">电子化学品Ⅱ</text>
+<rect x="430.0" y="421" width="136.8" height="17" fill="#e0322f" rx="2"/>
+<text x="572.8" y="435.0" font-size="11" fill="#e0322f">+9.17%</text>
+<text x="202" y="435.0" font-size="11" fill="#222831" text-anchor="end">镍</text>
+<rect x="430.0" y="447" width="133.6" height="17" fill="#e0322f" rx="2"/>
+<text x="569.6" y="461.0" font-size="11" fill="#e0322f">+8.96%</text>
+<text x="202" y="461.0" font-size="11" fill="#222831" text-anchor="end">白银</text>
+<rect x="430.0" y="473" width="132.7" height="17" fill="#e0322f" rx="2"/>
+<text x="568.7" y="487.0" font-size="11" fill="#e0322f">+8.90%</text>
+<text x="202" y="487.0" font-size="11" fill="#222831" text-anchor="end">激光设备</text>
+<rect x="430.0" y="499" width="124.7" height="17" fill="#e0322f" rx="2"/>
+<text x="560.7" y="513.0" font-size="11" fill="#e0322f">+8.36%</text>
+<text x="202" y="513.0" font-size="11" fill="#222831" text-anchor="end">光学元件</text>
+<rect x="430.0" y="525" width="121.9" height="17" fill="#e0322f" rx="2"/>
+<text x="557.9" y="539.0" font-size="11" fill="#e0322f">+8.17%</text>
+<text x="202" y="539.0" font-size="11" fill="#222831" text-anchor="end">数字芯片设计</text>
+<rect x="430.0" y="551" width="114.3" height="17" fill="#e0322f" rx="2"/>
+<text x="550.3" y="565.0" font-size="11" fill="#e0322f">+7.66%</text>
+<text x="202" y="565.0" font-size="11" fill="#222831" text-anchor="end">橡胶助剂</text>
+<rect x="430.0" y="577" width="110.8" height="17" fill="#e0322f" rx="2"/>
+<text x="546.8" y="591.0" font-size="11" fill="#e0322f">+7.43%</text>
+<text x="202" y="591.0" font-size="11" fill="#222831" text-anchor="end">被动元件</text>
+</svg>
+    <h3 style="font-size:14px;margin:14px 0 6px">当日行业板块跌幅榜</h3>
+    <svg viewBox="0 0 720 480" width="100%" role="img" aria-label="bar">
+<line x1="430.0" y1="204" x2="430.0" y2="474" stroke="#e5e7eb"/>
+<rect x="210.0" y="213" width="220.0" height="17" fill="#16a34a" rx="2"/>
+<text x="204.0" y="227.0" font-size="11" fill="#16a34a" text-anchor="end">-4.82%</text>
+<text x="202" y="227.0" font-size="11" fill="#222831" text-anchor="end">海洋捕捞</text>
+<rect x="234.2" y="239" width="195.8" height="17" fill="#16a34a" rx="2"/>
+<text x="228.2" y="253.0" font-size="11" fill="#16a34a" text-anchor="end">-4.29%</text>
+<text x="202" y="253.0" font-size="11" fill="#222831" text-anchor="end">油气开采Ⅱ</text>
+<rect x="234.2" y="265" width="195.8" height="17" fill="#16a34a" rx="2"/>
+<text x="228.2" y="279.0" font-size="11" fill="#16a34a" text-anchor="end">-4.29%</text>
+<text x="202" y="279.0" font-size="11" fill="#222831" text-anchor="end">油气开采Ⅲ</text>
+<rect x="239.2" y="291" width="190.8" height="17" fill="#16a34a" rx="2"/>
+<text x="233.2" y="305.0" font-size="11" fill="#16a34a" text-anchor="end">-4.18%</text>
+<text x="202" y="305.0" font-size="11" fill="#222831" text-anchor="end">涂料</text>
+<rect x="248.8" y="317" width="181.2" height="17" fill="#16a34a" rx="2"/>
+<text x="242.8" y="331.0" font-size="11" fill="#16a34a" text-anchor="end">-3.97%</text>
+<text x="202" y="331.0" font-size="11" fill="#222831" text-anchor="end">油气及炼化工程</text>
+<rect x="254.7" y="343" width="175.3" height="17" fill="#16a34a" rx="2"/>
+<text x="248.7" y="357.0" font-size="11" fill="#16a34a" text-anchor="end">-3.84%</text>
+<text x="202" y="357.0" font-size="11" fill="#222831" text-anchor="end">油服工程</text>
+<rect x="259.3" y="369" width="170.7" height="17" fill="#16a34a" rx="2"/>
+<text x="253.3" y="383.0" font-size="11" fill="#16a34a" text-anchor="end">-3.74%</text>
+<text x="202" y="383.0" font-size="11" fill="#222831" text-anchor="end">油田服务</text>
+<rect x="263.9" y="395" width="166.1" height="17" fill="#16a34a" rx="2"/>
+<text x="257.9" y="409.0" font-size="11" fill="#16a34a" text-anchor="end">-3.64%</text>
+<text x="202" y="409.0" font-size="11" fill="#222831" text-anchor="end">渔业</text>
+<rect x="273.9" y="421" width="156.1" height="17" fill="#16a34a" rx="2"/>
+<text x="267.9" y="435.0" font-size="11" fill="#16a34a" text-anchor="end">-3.42%</text>
+<text x="202" y="435.0" font-size="11" fill="#222831" text-anchor="end">运动服装</text>
+<rect x="289.9" y="447" width="140.1" height="17" fill="#16a34a" rx="2"/>
+<text x="283.9" y="461.0" font-size="11" fill="#16a34a" text-anchor="end">-3.07%</text>
+<text x="202" y="461.0" font-size="11" fill="#222831" text-anchor="end">畜禽饲料</text>
+</svg>
+    <h3 style="font-size:14px;margin:16px 0 6px">主要指数近5日走势</h3>
+    <svg viewBox="0 0 760 320" width="100%" role="img" aria-label="line">
+<line x1="52" y1="286.0" x2="650" y2="286.0" stroke="#eef0f3"/>
+<text x="44" y="290.0" font-size="10" fill="#6b7280" text-anchor="end">1,715</text>
+<line x1="52" y1="220.5" x2="650" y2="220.5" stroke="#eef0f3"/>
+<text x="44" y="224.5" font-size="10" fill="#6b7280" text-anchor="end">5,018</text>
+<line x1="52" y1="155.0" x2="650" y2="155.0" stroke="#eef0f3"/>
+<text x="44" y="159.0" font-size="10" fill="#6b7280" text-anchor="end">8,320</text>
+<line x1="52" y1="89.5" x2="650" y2="89.5" stroke="#eef0f3"/>
+<text x="44" y="93.5" font-size="10" fill="#6b7280" text-anchor="end">11,623</text>
+<line x1="52" y1="24.0" x2="650" y2="24.0" stroke="#eef0f3"/>
+<text x="44" y="28.0" font-size="10" fill="#6b7280" text-anchor="end">14,925</text>
+<text x="52.0" y="308" font-size="10" fill="#6b7280" text-anchor="middle">07-13</text>
+<text x="151.7" y="308" font-size="10" fill="#6b7280" text-anchor="middle">07-14</text>
+<text x="251.3" y="308" font-size="10" fill="#6b7280" text-anchor="middle">07-15</text>
+<text x="351.0" y="308" font-size="10" fill="#6b7280" text-anchor="middle">07-16</text>
+<text x="450.7" y="308" font-size="10" fill="#6b7280" text-anchor="middle">07-17</text>
+<text x="550.3" y="308" font-size="10" fill="#6b7280" text-anchor="middle">07-20</text>
+<text x="650.0" y="308" font-size="10" fill="#6b7280" text-anchor="middle">07-21</text>
+<polyline points="52.0,242.4 151.7,241.3 251.3,241.6 351.0,243.0 450.7,245.4 550.3,244.7 650.0,243.4" fill="none" stroke="#2b5fe3" stroke-width="2"/>
+<circle cx="650.0" cy="243.4" r="3" fill="#2b5fe3"/>
+<polyline points="52.0,32.0 151.7,24.0 251.3,26.9 351.0,32.7 450.7,48.2 550.3,50.1 650.0,37.1" fill="none" stroke="#e0322f" stroke-width="2"/>
+<circle cx="650.0" cy="37.1" r="3" fill="#e0322f"/>
+<polyline points="52.0,246.2 151.7,243.6 251.3,244.6 351.0,246.8 450.7,252.0 550.3,251.7 650.0,246.9" fill="none" stroke="#1a9e5f" stroke-width="2"/>
+<circle cx="650.0" cy="246.9" r="3" fill="#1a9e5f"/>
+<polyline points="52.0,226.9 151.7,224.9 251.3,225.1 351.0,226.8 450.7,230.2 550.3,228.8 650.0,226.0" fill="none" stroke="#e0a32f" stroke-width="2"/>
+<circle cx="650.0" cy="226.0" r="3" fill="#e0a32f"/>
+<polyline points="52.0,280.5 151.7,280.2 251.3,281.9 351.0,283.4 450.7,286.0 550.3,285.9 650.0,282.3" fill="none" stroke="#7c5cff" stroke-width="2"/>
+<circle cx="650.0" cy="282.3" r="3" fill="#7c5cff"/>
+<rect x="658" y="20" width="12" height="12" rx="2" fill="#2b5fe3"/>
+<text x="676" y="30" font-size="11" fill="#222831">上证指数</text>
+<rect x="658" y="42" width="12" height="12" rx="2" fill="#e0322f"/>
+<text x="676" y="52" font-size="11" fill="#222831">深证成指</text>
+<rect x="658" y="64" width="12" height="12" rx="2" fill="#1a9e5f"/>
+<text x="676" y="74" font-size="11" fill="#222831">创业板指</text>
+<rect x="658" y="86" width="12" height="12" rx="2" fill="#e0a32f"/>
+<text x="676" y="96" font-size="11" fill="#222831">沪深300</text>
+<rect x="658" y="108" width="12" height="12" rx="2" fill="#7c5cff"/>
+<text x="676" y="118" font-size="11" fill="#222831">科创50</text>
+</svg>
+    <div class="note">当日板块为申万/东方财富行业板块实时排行;近5日以主要指数收盘走势为代表。</div>
+  </section>
+
+  <!-- 模块三:个股资金 -->
+  <section>
+    <h2>③ 个股资金 <span class="tag">主力净流入/流出 · 涨幅榜</span></h2>
+    <div class="grid2">
+      <div>
+        <h3 style="font-size:14px;margin:4px 0 6px">主力净流入 Top15(亿元)</h3>
+        <svg viewBox="0 0 720 600" width="100%" role="img" aria-label="bar">
+<rect x="200" y="203" width="430.0" height="17" fill="#e0322f" rx="2"/>
+<text x="636.0" y="217.0" font-size="11" fill="#e0322f">30.4</text>
+<text x="192" y="217.0" font-size="11" fill="#222831" text-anchor="end">中际旭创</text>
+<rect x="200" y="229" width="316.6" height="17" fill="#e0322f" rx="2"/>
+<text x="522.6" y="243.0" font-size="11" fill="#e0322f">22.4</text>
+<text x="192" y="243.0" font-size="11" fill="#222831" text-anchor="end">兆易创新</text>
+<rect x="200" y="255" width="249.9" height="17" fill="#e0322f" rx="2"/>
+<text x="455.9" y="269.0" font-size="11" fill="#e0322f">17.7</text>
+<text x="192" y="269.0" font-size="11" fill="#222831" text-anchor="end">京东方Ａ</text>
+<rect x="200" y="281" width="212.2" height="17" fill="#e0322f" rx="2"/>
+<text x="418.2" y="295.0" font-size="11" fill="#e0322f">15.0</text>
+<text x="192" y="295.0" font-size="11" fill="#222831" text-anchor="end">新易盛</text>
+<rect x="200" y="307" width="204.8" height="17" fill="#e0322f" rx="2"/>
+<text x="410.8" y="321.0" font-size="11" fill="#e0322f">14.5</text>
+<text x="192" y="321.0" font-size="11" fill="#222831" text-anchor="end">生益科技</text>
+<rect x="200" y="333" width="196.5" height="17" fill="#e0322f" rx="2"/>
+<text x="402.5" y="347.0" font-size="11" fill="#e0322f">13.9</text>
+<text x="192" y="347.0" font-size="11" fill="#222831" text-anchor="end">长电科技</text>
+<rect x="200" y="359" width="195.1" height="17" fill="#e0322f" rx="2"/>
+<text x="401.1" y="373.0" font-size="11" fill="#e0322f">13.8</text>
+<text x="192" y="373.0" font-size="11" fill="#222831" text-anchor="end">中芯国际</text>
+<rect x="200" y="385" width="188.9" height="17" fill="#e0322f" rx="2"/>
+<text x="394.9" y="399.0" font-size="11" fill="#e0322f">13.3</text>
+<text x="192" y="399.0" font-size="11" fill="#222831" text-anchor="end">北方华创</text>
+<rect x="200" y="411" width="154.4" height="17" fill="#e0322f" rx="2"/>
+<text x="360.4" y="425.0" font-size="11" fill="#e0322f">10.9</text>
+<text x="192" y="425.0" font-size="11" fill="#222831" text-anchor="end">中微公司</text>
+<rect x="200" y="437" width="150.8" height="17" fill="#e0322f" rx="2"/>
+<text x="356.8" y="451.0" font-size="11" fill="#e0322f">10.7</text>
+<text x="192" y="451.0" font-size="11" fill="#222831" text-anchor="end">工业富联</text>
+<rect x="200" y="463" width="144.6" height="17" fill="#e0322f" rx="2"/>
+<text x="350.6" y="477.0" font-size="11" fill="#e0322f">10.2</text>
+<text x="192" y="477.0" font-size="11" fill="#222831" text-anchor="end">协创数据</text>
+<rect x="200" y="489" width="139.3" height="17" fill="#e0322f" rx="2"/>
+<text x="345.3" y="503.0" font-size="11" fill="#e0322f">9.8</text>
+<text x="192" y="503.0" font-size="11" fill="#222831" text-anchor="end">宁德时代</text>
+<rect x="200" y="515" width="123.5" height="17" fill="#e0322f" rx="2"/>
+<text x="329.5" y="529.0" font-size="11" fill="#e0322f">8.7</text>
+<text x="192" y="529.0" font-size="11" fill="#222831" text-anchor="end">北京君正</text>
+<rect x="200" y="541" width="120.8" height="17" fill="#e0322f" rx="2"/>
+<text x="326.8" y="555.0" font-size="11" fill="#e0322f">8.5</text>
+<text x="192" y="555.0" font-size="11" fill="#222831" text-anchor="end">华虹宏力</text>
+<rect x="200" y="567" width="115.1" height="17" fill="#e0322f" rx="2"/>
+<text x="321.1" y="581.0" font-size="11" fill="#e0322f">8.1</text>
+<text x="192" y="581.0" font-size="11" fill="#222831" text-anchor="end">三环集团</text>
+</svg>
+      </div>
+      <div>
+        <h3 style="font-size:14px;margin:4px 0 6px">主力净流出 Top15(亿元)</h3>
+        <svg viewBox="0 0 720 600" width="100%" role="img" aria-label="bar">
+<rect x="200" y="203" width="2723.6" height="17" fill="#16a34a" rx="2"/>
+<text x="2929.6" y="217.0" font-size="11" fill="#16a34a">-15.2</text>
+<text x="192" y="217.0" font-size="11" fill="#222831" text-anchor="end">德明利</text>
+<rect x="200" y="229" width="1215.5" height="17" fill="#16a34a" rx="2"/>
+<text x="1421.5" y="243.0" font-size="11" fill="#16a34a">-6.8</text>
+<text x="192" y="243.0" font-size="11" fill="#222831" text-anchor="end">五 粮 液</text>
+<rect x="200" y="255" width="1039.7" height="17" fill="#16a34a" rx="2"/>
+<text x="1245.7" y="269.0" font-size="11" fill="#16a34a">-5.8</text>
+<text x="192" y="269.0" font-size="11" fill="#222831" text-anchor="end">贵州茅台</text>
+<rect x="200" y="281" width="741.0" height="17" fill="#16a34a" rx="2"/>
+<text x="947.0" y="295.0" font-size="11" fill="#16a34a">-4.1</text>
+<text x="192" y="295.0" font-size="11" fill="#222831" text-anchor="end">信维通信</text>
+<rect x="200" y="307" width="658.6" height="17" fill="#16a34a" rx="2"/>
+<text x="864.6" y="321.0" font-size="11" fill="#16a34a">-3.7</text>
+<text x="192" y="321.0" font-size="11" fill="#222831" text-anchor="end">招商银行</text>
+<rect x="200" y="333" width="647.5" height="17" fill="#16a34a" rx="2"/>
+<text x="853.5" y="347.0" font-size="11" fill="#16a34a">-3.6</text>
+<text x="192" y="347.0" font-size="11" fill="#222831" text-anchor="end">泸州老窖</text>
+<rect x="200" y="359" width="633.0" height="17" fill="#16a34a" rx="2"/>
+<text x="839.0" y="373.0" font-size="11" fill="#16a34a">-3.5</text>
+<text x="192" y="373.0" font-size="11" fill="#222831" text-anchor="end">宁波银行</text>
+<rect x="200" y="385" width="560.8" height="17" fill="#16a34a" rx="2"/>
+<text x="766.8" y="399.0" font-size="11" fill="#16a34a">-3.1</text>
+<text x="192" y="399.0" font-size="11" fill="#222831" text-anchor="end">中国移动</text>
+<rect x="200" y="411" width="548.6" height="17" fill="#16a34a" rx="2"/>
+<text x="754.6" y="425.0" font-size="11" fill="#16a34a">-3.1</text>
+<text x="192" y="425.0" font-size="11" fill="#222831" text-anchor="end">中巨芯-U</text>
+<rect x="200" y="437" width="547.7" height="17" fill="#16a34a" rx="2"/>
+<text x="753.7" y="451.0" font-size="11" fill="#16a34a">-3.1</text>
+<text x="192" y="451.0" font-size="11" fill="#222831" text-anchor="end">工商银行</text>
+<rect x="200" y="463" width="543.9" height="17" fill="#16a34a" rx="2"/>
+<text x="749.9" y="477.0" font-size="11" fill="#16a34a">-3.0</text>
+<text x="192" y="477.0" font-size="11" fill="#222831" text-anchor="end">东方财富</text>
+<rect x="200" y="489" width="495.9" height="17" fill="#16a34a" rx="2"/>
+<text x="701.9" y="503.0" font-size="11" fill="#16a34a">-2.8</text>
+<text x="192" y="503.0" font-size="11" fill="#222831" text-anchor="end">中国中车</text>
+<rect x="200" y="515" width="463.8" height="17" fill="#16a34a" rx="2"/>
+<text x="669.8" y="529.0" font-size="11" fill="#16a34a">-2.6</text>
+<text x="192" y="529.0" font-size="11" fill="#222831" text-anchor="end">亨通光电</text>
+<rect x="200" y="541" width="436.8" height="17" fill="#16a34a" rx="2"/>
+<text x="642.8" y="555.0" font-size="11" fill="#16a34a">-2.4</text>
+<text x="192" y="555.0" font-size="11" fill="#222831" text-anchor="end">美诺华</text>
+<rect x="200" y="567" width="430.0" height="17" fill="#16a34a" rx="2"/>
+<text x="636.0" y="581.0" font-size="11" fill="#16a34a">-2.4</text>
+<text x="192" y="581.0" font-size="11" fill="#222831" text-anchor="end">中国建筑</text>
+</svg>
+      </div>
+    </div>
+    <h3 style="font-size:14px;margin:16px 0 4px">涨幅榜 Top15</h3>
+    <svg viewBox="0 0 720 610" width="100%" role="img" aria-label="bar">
+<line x1="430.0" y1="204" x2="430.0" y2="604" stroke="#e5e7eb"/>
+<rect x="430.0" y="213" width="220.0" height="17" fill="#e0322f" rx="2"/>
+<text x="656.0" y="227.0" font-size="11" fill="#e0322f">+211.89%</text>
+<text x="202" y="227.0" font-size="11" fill="#222831" text-anchor="end">N泰诺-U</text>
+<rect x="430.0" y="239" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="253.0" font-size="11" fill="#e0322f">+20.03%</text>
+<text x="202" y="253.0" font-size="11" fill="#222831" text-anchor="end">格科微</text>
+<rect x="430.0" y="265" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="279.0" font-size="11" fill="#e0322f">+20.03%</text>
+<text x="202" y="279.0" font-size="11" fill="#222831" text-anchor="end">万通智控</text>
+<rect x="430.0" y="291" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="305.0" font-size="11" fill="#e0322f">+20.02%</text>
+<text x="202" y="305.0" font-size="11" fill="#222831" text-anchor="end">扬电科技</text>
+<rect x="430.0" y="317" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="331.0" font-size="11" fill="#e0322f">+20.02%</text>
+<text x="202" y="331.0" font-size="11" fill="#222831" text-anchor="end">米奥会展</text>
+<rect x="430.0" y="343" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="357.0" font-size="11" fill="#e0322f">+20.01%</text>
+<text x="202" y="357.0" font-size="11" fill="#222831" text-anchor="end">美新科技</text>
+<rect x="430.0" y="369" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="383.0" font-size="11" fill="#e0322f">+20.01%</text>
+<text x="202" y="383.0" font-size="11" fill="#222831" text-anchor="end">波长光电</text>
+<rect x="430.0" y="395" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="409.0" font-size="11" fill="#e0322f">+20.01%</text>
+<text x="202" y="409.0" font-size="11" fill="#222831" text-anchor="end">深科达</text>
+<rect x="430.0" y="421" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="435.0" font-size="11" fill="#e0322f">+20.00%</text>
+<text x="202" y="435.0" font-size="11" fill="#222831" text-anchor="end">正帆科技</text>
+<rect x="430.0" y="447" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="461.0" font-size="11" fill="#e0322f">+20.00%</text>
+<text x="202" y="461.0" font-size="11" fill="#222831" text-anchor="end">东芯股份</text>
+<rect x="430.0" y="473" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="487.0" font-size="11" fill="#e0322f">+20.00%</text>
+<text x="202" y="487.0" font-size="11" fill="#222831" text-anchor="end">鑫宏业</text>
+<rect x="430.0" y="499" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="513.0" font-size="11" fill="#e0322f">+20.00%</text>
+<text x="202" y="513.0" font-size="11" fill="#222831" text-anchor="end">东微半导</text>
+<rect x="430.0" y="525" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="539.0" font-size="11" fill="#e0322f">+20.00%</text>
+<text x="202" y="539.0" font-size="11" fill="#222831" text-anchor="end">中科飞测</text>
+<rect x="430.0" y="551" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="565.0" font-size="11" fill="#e0322f">+20.00%</text>
+<text x="202" y="565.0" font-size="11" fill="#222831" text-anchor="end">华虹宏力</text>
+<rect x="430.0" y="577" width="20.8" height="17" fill="#e0322f" rx="2"/>
+<text x="456.8" y="591.0" font-size="11" fill="#e0322f">+20.00%</text>
+<text x="202" y="591.0" font-size="11" fill="#222831" text-anchor="end">臻宝科技</text>
+</svg>
+  </section>
+
+  <footer>
+    本报告由金融情绪日报自动生成 · 行情数据来自公开接口,仅供参考,不构成投资建议<br>
+    生成时间:2026-07-21 19:00 · 报告地址:https://lilongfei1010-star.github.io/fin-daily-report/
+  </footer>
 </div>
 </body>
 </html>
